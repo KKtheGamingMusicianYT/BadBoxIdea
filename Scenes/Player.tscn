@@ -1,0 +1,215 @@
+[gd_scene format=3 uid="uid://b38x0l1gd3w7w"]
+
+[ext_resource type="Script" uid="uid://s47n36gexdn" path="res://Scripts/player.gd" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://bnmqtw3dx3iyv" path="res://Scripts/ResourceScripts/char_body_properties.gd" id="2_8erm5"]
+[ext_resource type="Script" uid="uid://d08om7kbbbn83" path="res://Scripts/state_machine.gd" id="2_cvnsp"]
+[ext_resource type="Script" uid="uid://de0kpyhvlghxl" path="res://Scripts/States/walk.gd" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://b4i6j0acboslj" path="res://Scripts/States/idle.gd" id="3_x3wgy"]
+[ext_resource type="Script" uid="uid://d1iwjkvirj3nw" path="res://Scripts/States/jump.gd" id="4_vgqql"]
+[ext_resource type="Script" uid="uid://dfwxkgpoc4wi" path="res://Scripts/States/fall.gd" id="7_3smsa"]
+[ext_resource type="Script" uid="uid://dpxdkhr428kv0" path="res://Scripts/States/run.gd" id="7_megsn"]
+[ext_resource type="Texture2D" uid="uid://bkbbc6m7eikby" path="res://Assets/Sprites/Player/IdleFrames/Frame0012.png" id="9_u7x0b"]
+[ext_resource type="Texture2D" uid="uid://c2x8hpib8xa88" path="res://Assets/Sprites/Player/IdleFrames/Frame0013.png" id="10_utwlt"]
+[ext_resource type="Texture2D" uid="uid://bxgrno002ud2d" path="res://Assets/Sprites/Player/IdleFrames/Frame0014.png" id="11_kih0c"]
+[ext_resource type="Texture2D" uid="uid://l8bl0uftkthk" path="res://Assets/Sprites/Player/IdleFrames/Frame0015.png" id="12_lyrkg"]
+[ext_resource type="Texture2D" uid="uid://brtkxq3nhqf0e" path="res://Assets/Sprites/Player/IdleFrames/Frame0016.png" id="13_c43xd"]
+[ext_resource type="Texture2D" uid="uid://nw70ctuuyn5s" path="res://Assets/Sprites/Player/IdleFrames/Frame0017.png" id="14_avx33"]
+[ext_resource type="Texture2D" uid="uid://7i8iavlyxo6m" path="res://Assets/Sprites/Player/IdleFrames/Frame0018.png" id="15_rxg2u"]
+[ext_resource type="Texture2D" uid="uid://bvyn5e7wepkv" path="res://Assets/Sprites/Player/IdleFrames/Frame0019.png" id="16_xixlo"]
+[ext_resource type="Texture2D" uid="uid://dm1xwta7e6apf" path="res://Assets/Sprites/Player/IdleFrames/Frame0020.png" id="17_bfbt0"]
+[ext_resource type="Texture2D" uid="uid://bt7pgdx0tdmse" path="res://Assets/Sprites/Player/WalkFrames/Frame0001.png" id="18_wosd6"]
+[ext_resource type="Texture2D" uid="uid://cw05y4bwxfxcb" path="res://Assets/Sprites/Player/WalkFrames/Frame0002.png" id="19_hkrn1"]
+[ext_resource type="Texture2D" uid="uid://btxraqgrkil7m" path="res://Assets/Sprites/Player/WalkFrames/Frame0003.png" id="20_wpo1r"]
+[ext_resource type="Texture2D" uid="uid://cgdiv0woq0uoa" path="res://Assets/Sprites/Player/WalkFrames/Frame0004.png" id="21_pqity"]
+[ext_resource type="Texture2D" uid="uid://xvijdhlhsu43" path="res://Assets/Sprites/Player/WalkFrames/Frame0005.png" id="22_opqna"]
+[ext_resource type="Texture2D" uid="uid://rc114cxa8r2k" path="res://Assets/Sprites/Player/WalkFrames/Frame0006.png" id="23_00okb"]
+[ext_resource type="Texture2D" uid="uid://bi6jrdqxrvq0p" path="res://Assets/Sprites/Player/WalkFrames/Frame0007.png" id="24_6hr71"]
+[ext_resource type="Texture2D" uid="uid://bxhom6aytxunj" path="res://Assets/Sprites/Player/WalkFrames/Frame0008.png" id="25_y6y60"]
+[ext_resource type="Texture2D" uid="uid://cnk1le3oqyomo" path="res://Assets/Sprites/Player/WalkFrames/Frame0009.png" id="26_vmcrb"]
+[ext_resource type="Texture2D" uid="uid://bbkj3focfnbmw" path="res://Assets/Sprites/Player/WalkFrames/Frame0010.png" id="27_teras"]
+
+[sub_resource type="Resource" id="Resource_hixwb"]
+script = ExtResource("2_8erm5")
+metadata/_custom_type_script = "uid://bnmqtw3dx3iyv"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bhhdu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_u7x0b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_utwlt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_kih0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_lyrkg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_c43xd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_avx33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_rxg2u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_xixlo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_bfbt0")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_wosd6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_hkrn1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_wpo1r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_pqity")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_opqna")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_00okb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_6hr71")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_y6y60")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_vmcrb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_teras")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 30.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_megsn"]
+size = Vector2(32, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yoq75"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ksbbd"]
+size = Vector2(80, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_glx4g"]
+size = Vector2(10, 10)
+
+[node name="Player" type="CharacterBody2D" unique_id=404843843 node_paths=PackedStringArray("BUFFER_JUMP_TIMER", "SMALL_PHYSICS_BOX", "COYOTE_BOX", "GAP_CENSOR", "FLOOR_WALL_CENSOR", "GAP_BOX", "CLIP_LEFT", "CLIP_RIGHT", "CEILING_SENSOR", "CHARACTER_ANIMATED_SPRITE", "state_machine")]
+collision_layer = 0
+script = ExtResource("1_v0iea")
+BUFFER_JUMP_TIMER = NodePath("BufferJumpTimer")
+SMALL_PHYSICS_BOX = NodePath("SmallPhysicsHitBox")
+COYOTE_BOX = NodePath("CoyoteBox")
+GAP_CENSOR = NodePath("GapCensor")
+FLOOR_WALL_CENSOR = NodePath("FloorWallCensor")
+GAP_BOX = NodePath("GapBox")
+CLIP_LEFT = NodePath("ClipCeilingSensors/ClipLeft")
+CLIP_RIGHT = NodePath("ClipCeilingSensors/ClipRight")
+CEILING_SENSOR = NodePath("ClipCeilingSensors/CeilingSensor")
+CHARACTER_ANIMATED_SPRITE = NodePath("AnimatedSprite2D")
+properties = SubResource("Resource_hixwb")
+state_machine = NodePath("StateMachine")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=396514442]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_bhhdu")
+animation = &"Walk"
+frame_progress = 0.053851273
+metadata/_edit_lock_ = true
+
+[node name="BufferJumpTimer" type="Timer" parent="." unique_id=849087095]
+wait_time = 0.2
+one_shot = true
+ignore_time_scale = true
+
+[node name="SmallPhysicsHitBox" type="CollisionShape2D" parent="." unique_id=175223632]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_megsn")
+
+[node name="CoyoteBox" type="CollisionPolygon2D" parent="." unique_id=780247785]
+position = Vector2(0, -32)
+polygon = PackedVector2Array(-64, 64, -0.5, 64, -0.5, 48, -64, 48)
+disabled = true
+one_way_collision = true
+
+[node name="GapCensor" type="RayCast2D" parent="." unique_id=1998703868]
+target_position = Vector2(0, 72)
+
+[node name="FloorWallCensor" type="ShapeCast2D" parent="." unique_id=2092207570]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_yoq75")
+target_position = Vector2(0, 0)
+
+[node name="GapBox" type="CollisionShape2D" parent="." unique_id=514765509]
+position = Vector2(0, 28)
+shape = SubResource("RectangleShape2D_ksbbd")
+
+[node name="ClipCeilingSensors" type="Node2D" parent="." unique_id=910299419]
+
+[node name="ClipLeft" type="RayCast2D" parent="ClipCeilingSensors" unique_id=1779056694]
+position = Vector2(-16, -24)
+target_position = Vector2(0, -16)
+
+[node name="ClipRight" type="RayCast2D" parent="ClipCeilingSensors" unique_id=2086803082]
+position = Vector2(16, -24)
+target_position = Vector2(0, -16)
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="CeilingSensor" type="ShapeCast2D" parent="ClipCeilingSensors" unique_id=1381089293]
+shape = SubResource("RectangleShape2D_glx4g")
+target_position = Vector2(0, -16)
+
+[node name="StateMachine" type="Node" parent="." unique_id=1805402115 node_paths=PackedStringArray("parent")]
+script = ExtResource("2_cvnsp")
+parent = NodePath("..")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1702566398]
+script = ExtResource("3_x3wgy")
+metadata/_custom_type_script = "uid://b4i6j0acboslj"
+
+[node name="Horizontal" type="Node" parent="StateMachine" unique_id=419637479]
+
+[node name="Walk" type="Node" parent="StateMachine/Horizontal" unique_id=2013006271]
+script = ExtResource("3_6t5aa")
+metadata/_custom_type_script = "uid://de0kpyhvlghxl"
+
+[node name="Run" type="Node" parent="StateMachine/Horizontal" unique_id=221415465]
+script = ExtResource("7_megsn")
+metadata/_custom_type_script = "uid://dpxdkhr428kv0"
+
+[node name="Vertical" type="Node" parent="StateMachine" unique_id=1790400164]
+
+[node name="Jump" type="Node" parent="StateMachine/Vertical" unique_id=1807448285]
+script = ExtResource("4_vgqql")
+metadata/_custom_type_script = "uid://d1iwjkvirj3nw"
+
+[node name="Fall" type="Node" parent="StateMachine/Vertical" unique_id=672030015]
+script = ExtResource("7_3smsa")
+metadata/_custom_type_script = "uid://dfwxkgpoc4wi"
+
+[connection signal="state_machine_path" from="StateMachine" to="StateMachine/Idle" method="recieve_state_machine"]
+[connection signal="state_machine_path" from="StateMachine" to="StateMachine/Horizontal/Walk" method="recieve_state_machine"]
+[connection signal="state_machine_path" from="StateMachine" to="StateMachine/Horizontal/Run" method="recieve_state_machine"]
+[connection signal="state_machine_path" from="StateMachine" to="StateMachine/Vertical/Jump" method="recieve_state_machine"]
+[connection signal="state_machine_path" from="StateMachine" to="StateMachine/Vertical/Fall" method="recieve_state_machine"]

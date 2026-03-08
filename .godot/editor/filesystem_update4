@@ -1,0 +1,7 @@
+res://Scenes/Player.tscn
+res://Scripts/ResourceScripts/Resources/Themes/box_interface_theme.tres
+res://Scripts/Shaders/color_shader.tres
+res://Scripts/Shaders/wavy_shader.tres
+res://Scenes/test.tscn
+res://Scripts/ResourceScripts/Resources/test_1.tres
+res://Scenes/item.tscn

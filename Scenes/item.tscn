@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bx7japdg7ed76"]
+
+[ext_resource type="Theme" uid="uid://bbod45f0la5hg" path="res://Scripts/ResourceScripts/Resources/Themes/box_interface_theme.tres" id="1_08o4a"]
+[ext_resource type="Shader" uid="uid://t04abpxnm5vu" path="res://Scripts/Shaders/color_shader.tres" id="1_btogu"]
+[ext_resource type="Script" uid="uid://clphw1ctqar7" path="res://Scripts/item.gd" id="3_o34di"]
+[ext_resource type="Resource" uid="uid://brk62snwafh8d" path="res://Scripts/ResourceScripts/Resources/blank.tres" id="4_btogu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tnst4"]
+shader = ExtResource("1_btogu")
+shader_parameter/Color = Color(1, 0, 0, 1)
+
+[node name="Item" type="Button" unique_id=540643436]
+material = SubResource("ShaderMaterial_tnst4")
+custom_minimum_size = Vector2(128, 128)
+offset_right = 128.0
+offset_bottom = 128.0
+focus_mode = 0
+theme = ExtResource("1_08o4a")
+expand_icon = true
+script = ExtResource("3_o34di")
+item = ExtResource("4_btogu")
+metadata/_custom_type_script = "uid://clphw1ctqar7"
