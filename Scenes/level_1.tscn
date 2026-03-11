@@ -1,3 +1,48 @@
-[gd_scene format=3 uid="uid://6oispmhnqw68"]
+[gd_scene format=4 uid="uid://6oispmhnqw68"]
+
+[ext_resource type="Script" uid="uid://2bnf5vqwki2g" path="res://Scripts/follow_cam.gd" id="1_vk57k"]
+[ext_resource type="TileSet" uid="uid://dpqhevuc17ijh" path="res://Scripts/ResourceScripts/Resources/test_tileset.tres" id="2_7p6j4"]
+[ext_resource type="PackedScene" uid="uid://b38x0l1gd3w7w" path="res://Scenes/Player.tscn" id="3_6444e"]
+[ext_resource type="Script" uid="uid://c52xh8xbqn2i1" path="res://Scripts/player_cam.gd" id="4_evi0p"]
+[ext_resource type="PackedScene" uid="uid://coefif7s7p7tm" path="res://Scenes/box_interface.tscn" id="5_6444e"]
+[ext_resource type="PackedScene" uid="uid://bx7japdg7ed76" path="res://Scenes/item.tscn" id="6_evi0p"]
+[ext_resource type="Texture2D" uid="uid://clg8samn7gqkr" path="res://Assets/Sprites/Block/Size0000.png" id="7_xrdnt"]
+[ext_resource type="Resource" uid="uid://co4dn2fqmywbl" path="res://Scripts/ResourceScripts/Resources/block1.tres" id="8_wrinw"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8ffim"]
+normal = Vector2(-1, 0)
 
 [node name="Level1" type="Node2D" unique_id=685188657]
+
+[node name="RBoarder" type="StaticBody2D" parent="." unique_id=1191529108 node_paths=PackedStringArray("camera")]
+position = Vector2(1808, 0)
+script = ExtResource("1_vk57k")
+camera = NodePath("../Player/PlayerCamera")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RBoarder" unique_id=2063946315]
+shape = SubResource("WorldBoundaryShape2D_8ffim")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1574234901]
+tile_map_data = PackedByteArray("AAAAAA8AAAAAAAAAAAAAABAAAAAAAAEAAAABAA8AAAABAAAAAAABABAAAAABAAEAAAACAA8AAAAAAAAAAAACABAAAAAAAAEAAAADAA8AAAABAAAAAAADABAAAAABAAEAAAAEAA8AAAAAAAAAAAAEABAAAAAAAAEAAAAFAA8AAAABAAAAAAAFABAAAAABAAEAAAAGAA8AAAAAAAAAAAAGABAAAAAAAAEAAAAHAA8AAAABAAAAAAAHABAAAAABAAEAAAAIAA8AAAAAAAAAAAAIABAAAAAAAAEAAAAJAA8AAAABAAAAAAAJABAAAAABAAEAAAAKAA8AAAAAAAAAAAAKABAAAAAAAAEAAAALAA8AAAABAAAAAAALABAAAAABAAEAAAAMAA8AAAAAAAAAAAAMABAAAAAAAAEAAAANAA8AAAABAAAAAAANABAAAAABAAEAAAAOAA8AAAAAAAAAAAAOABAAAAAAAAEAAAAPAA8AAAABAAAAAAAPABAAAAABAAEAAAAQAA8AAAAAAAAAAAAQABAAAAAAAAEAAAARAA8AAAABAAAAAAARABAAAAABAAEAAAASAA8AAAAAAAAAAAASABAAAAAAAAEAAAATAA8AAAABAAAAAAATABAAAAABAAEAAAAUAA8AAAAAAAAAAAAUABAAAAAAAAEAAAAVAA8AAAABAAAAAAAVABAAAAABAAEAAAAWAA8AAAAAAAAAAAAWABAAAAAAAAEAAAAXAA8AAAABAAAAAAAXABAAAAABAAEAAAAYAA8AAAAAAAAAAAAYABAAAAAAAAEAAAAZAA8AAAABAAAAAAAZABAAAAABAAEAAAAaAA8AAAAAAAAAAAAaABAAAAAAAAEAAAAbAA8AAAABAAAAAAAbABAAAAABAAEAAAAcAA8AAAAAAAAAAAAcABAAAAAAAAEAAAAdAA8AAAABAAAAAAAdABAAAAABAAEAAAA=")
+tile_set = ExtResource("2_7p6j4")
+
+[node name="Player" parent="." unique_id=404843843 instance=ExtResource("3_6444e")]
+position = Vector2(184, 928)
+
+[node name="PlayerCamera" type="Camera2D" parent="Player" unique_id=419199480 node_paths=PackedStringArray("PLAYER")]
+limit_left = 0
+limit_top = 0
+limit_right = 1920
+limit_bottom = 1080
+script = ExtResource("4_evi0p")
+PLAYER = NodePath("..")
+metadata/_custom_type_script = "uid://c52xh8xbqn2i1"
+
+[node name="BoxInterface" parent="." unique_id=2091224111 instance=ExtResource("5_6444e")]
+
+[node name="Item" parent="BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox" parent_id_path=PackedInt32Array(2091224111, 527385168) index="0" unique_id=540643436 instance=ExtResource("6_evi0p")]
+layout_mode = 2
+icon = ExtResource("7_xrdnt")
+item = ExtResource("8_wrinw")
+
+[editable path="BoxInterface"]

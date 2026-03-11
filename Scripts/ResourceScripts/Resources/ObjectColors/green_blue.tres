@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d0df372ectwpm"]
+
+[ext_resource type="Shader" uid="uid://t04abpxnm5vu" path="res://Scripts/Shaders/color_shader.tres" id="1_kf5uv"]
+
+[resource]
+shader = ExtResource("1_kf5uv")
+shader_parameter/Color = Color(0, 1, 0.3333335, 1)

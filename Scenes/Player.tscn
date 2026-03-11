@@ -115,7 +115,6 @@ size = Vector2(80, 8)
 size = Vector2(10, 10)
 
 [node name="Player" type="CharacterBody2D" unique_id=404843843 node_paths=PackedStringArray("BUFFER_JUMP_TIMER", "SMALL_PHYSICS_BOX", "COYOTE_BOX", "GAP_CENSOR", "FLOOR_WALL_CENSOR", "GAP_BOX", "CLIP_LEFT", "CLIP_RIGHT", "CEILING_SENSOR", "CHARACTER_ANIMATED_SPRITE", "state_machine")]
-collision_layer = 0
 script = ExtResource("1_v0iea")
 BUFFER_JUMP_TIMER = NodePath("BufferJumpTimer")
 SMALL_PHYSICS_BOX = NodePath("SmallPhysicsHitBox")
@@ -169,14 +168,15 @@ shape = SubResource("RectangleShape2D_ksbbd")
 [node name="ClipLeft" type="RayCast2D" parent="ClipCeilingSensors" unique_id=1779056694]
 position = Vector2(-16, -24)
 target_position = Vector2(0, -16)
+hit_from_inside = true
 
 [node name="ClipRight" type="RayCast2D" parent="ClipCeilingSensors" unique_id=2086803082]
 position = Vector2(16, -24)
 target_position = Vector2(0, -16)
 hit_from_inside = true
-collide_with_areas = true
 
 [node name="CeilingSensor" type="ShapeCast2D" parent="ClipCeilingSensors" unique_id=1381089293]
+position = Vector2(0, -24)
 shape = SubResource("RectangleShape2D_glx4g")
 target_position = Vector2(0, -16)
 

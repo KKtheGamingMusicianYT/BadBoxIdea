@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://coefif7s7p7tm"]
+
+[ext_resource type="Theme" uid="uid://bbod45f0la5hg" path="res://Scripts/ResourceScripts/Resources/Themes/box_interface_theme.tres" id="1_u2qbd"]
+[ext_resource type="Texture2D" uid="uid://i8p7ck1mo7jl" path="res://Assets/Sprites/Box.png" id="2_7f475"]
+[ext_resource type="Script" uid="uid://b7q67txy4m1ew" path="res://Scripts/box_grid_container.gd" id="2_n6r5n"]
+[ext_resource type="PackedScene" uid="uid://bx7japdg7ed76" path="res://Scenes/item.tscn" id="3_yxk3c"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u2qbd"]
+texture = ExtResource("2_7f475")
+
+[node name="BoxInterface" type="CanvasLayer" unique_id=2091224111]
+follow_viewport_scale = 1.1
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1137164658]
+anchors_preset = -1
+anchor_left = 0.75000006
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 24.0
+offset_right = -20.0
+offset_bottom = -16.0
+grow_horizontal = 2
+theme = ExtResource("1_u2qbd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=320341525]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer" unique_id=1701445524]
+custom_minimum_size = Vector2(384, 384)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxTexture_u2qbd")
+
+[node name="InsideBox" type="GridContainer" parent="PanelContainer/VBoxContainer/PanelContainer" unique_id=527385168]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 2
+script = ExtResource("2_n6r5n")
+volume_limit = 4
+box = true
+metadata/_custom_type_script = "uid://b7q67txy4m1ew"
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer" unique_id=217313786]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="OutsideBox" type="GridContainer" parent="PanelContainer/VBoxContainer" unique_id=1854341907]
+custom_minimum_size = Vector2(0, 544)
+layout_mode = 2
+size_flags_vertical = 4
+columns = 3
+script = ExtResource("2_n6r5n")
+volume_limit = 600
+metadata/_custom_type_script = "uid://b7q67txy4m1ew"
+
+[node name="Item1" parent="PanelContainer/VBoxContainer/OutsideBox" unique_id=1726545559 instance=ExtResource("3_yxk3c")]
+layout_mode = 2
+
+[node name="Item2" parent="PanelContainer/VBoxContainer/OutsideBox" unique_id=1842494652 instance=ExtResource("3_yxk3c")]
+layout_mode = 2
+
+[node name="Item3" parent="PanelContainer/VBoxContainer/OutsideBox" unique_id=85214942 instance=ExtResource("3_yxk3c")]
+layout_mode = 2
+
+[node name="Item4" parent="PanelContainer/VBoxContainer/OutsideBox" unique_id=898766322 instance=ExtResource("3_yxk3c")]
+layout_mode = 2
+
+[node name="Item5" parent="PanelContainer/VBoxContainer/OutsideBox" unique_id=1070603357 instance=ExtResource("3_yxk3c")]
+layout_mode = 2
+
+[node name="Item6" parent="PanelContainer/VBoxContainer/OutsideBox" unique_id=1066062326 instance=ExtResource("3_yxk3c")]
+layout_mode = 2
+
+[node name="Item7" parent="PanelContainer/VBoxContainer/OutsideBox" unique_id=206206748 instance=ExtResource("3_yxk3c")]
+layout_mode = 2
+
+[node name="Item8" parent="PanelContainer/VBoxContainer/OutsideBox" unique_id=1676219241 instance=ExtResource("3_yxk3c")]
+layout_mode = 2
+
+[node name="Item9" parent="PanelContainer/VBoxContainer/OutsideBox" unique_id=1957718537 instance=ExtResource("3_yxk3c")]
+layout_mode = 2
+
+[node name="Item10" parent="PanelContainer/VBoxContainer/OutsideBox" unique_id=1433005767 instance=ExtResource("3_yxk3c")]
+layout_mode = 2
+
+[node name="Item11" parent="PanelContainer/VBoxContainer/OutsideBox" unique_id=1300926243 instance=ExtResource("3_yxk3c")]
+layout_mode = 2
+
+[node name="Item12" parent="PanelContainer/VBoxContainer/OutsideBox" unique_id=793939885 instance=ExtResource("3_yxk3c")]
+layout_mode = 2

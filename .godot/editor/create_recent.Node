@@ -1,8 +1,10 @@
-AnimatedSprite2D
+PanelContainer
 PlayerCamera
-Sprite2D
+TileMapLayer
 CollisionShape2D
 StaticBody2D
+AnimatedSprite2D
+Sprite2D
 CharacterBody
 Player
 Camera2D
@@ -11,4 +13,3 @@ CanvasLayer
 CharacterBody2D
 Grappling
 Node
-Area2D

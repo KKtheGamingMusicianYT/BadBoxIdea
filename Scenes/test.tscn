@@ -1,19 +1,20 @@
 [gd_scene format=4 uid="uid://ck48bmp531u0h"]
 
 [ext_resource type="Script" uid="uid://2bnf5vqwki2g" path="res://Scripts/follow_cam.gd" id="1_qpfo2"]
-[ext_resource type="Theme" uid="uid://bbod45f0la5hg" path="res://Scripts/ResourceScripts/Resources/Themes/box_interface_theme.tres" id="3_5wyu1"]
-[ext_resource type="Script" uid="uid://b7q67txy4m1ew" path="res://Scripts/box_grid_container.gd" id="4_0c07c"]
+[ext_resource type="TileSet" uid="uid://dpqhevuc17ijh" path="res://Scripts/ResourceScripts/Resources/test_tileset.tres" id="2_aees8"]
 [ext_resource type="Texture2D" uid="uid://clg8samn7gqkr" path="res://Assets/Sprites/Block/Size0000.png" id="5_0qy5o"]
 [ext_resource type="PackedScene" uid="uid://bx7japdg7ed76" path="res://Scenes/item.tscn" id="5_2cgwh"]
 [ext_resource type="Resource" uid="uid://co4dn2fqmywbl" path="res://Scripts/ResourceScripts/Resources/block1.tres" id="6_yb21e"]
-[ext_resource type="Texture2D" uid="uid://mn8vh3jody5" path="res://icon.svg" id="8_0c07c"]
+[ext_resource type="Material" uid="uid://bkj7mm6lfu5ys" path="res://Scripts/ResourceScripts/Resources/ObjectColors/dark_teal.tres" id="8_0qy5o"]
 [ext_resource type="Script" uid="uid://l47uf8luj8s6" path="res://Scripts/node_with_id.gd" id="8_2cgwh"]
 [ext_resource type="PackedScene" uid="uid://dhyync7cvqavl" path="res://Scenes/goal.tscn" id="9_2cgwh"]
 [ext_resource type="PackedScene" uid="uid://6oispmhnqw68" path="res://Scenes/level_1.tscn" id="10_iaow0"]
-[ext_resource type="Shader" uid="uid://t04abpxnm5vu" path="res://Scripts/Shaders/color_shader.tres" id="11_yb21e"]
+[ext_resource type="PackedScene" uid="uid://coefif7s7p7tm" path="res://Scenes/box_interface.tscn" id="10_qpfo2"]
 [ext_resource type="Texture2D" uid="uid://bn6l2vtf6ruv0" path="res://Assets/Sprites/Block/Size0001.png" id="12_aees8"]
 [ext_resource type="PackedScene" uid="uid://b38x0l1gd3w7w" path="res://Scenes/Player.tscn" id="13_aees8"]
 [ext_resource type="Script" uid="uid://c52xh8xbqn2i1" path="res://Scripts/player_cam.gd" id="14_mie3u"]
+[ext_resource type="Material" uid="uid://dgtliho6ft8kk" path="res://Scripts/ResourceScripts/Resources/ObjectColors/lime.tres" id="15_0qy5o"]
+[ext_resource type="Material" uid="uid://nswvvuj2hj3f" path="res://Scripts/ResourceScripts/Resources/ObjectColors/blue.tres" id="15_7nf3m"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qpfo2"]
 normal = Vector2(-1, 0)
@@ -21,44 +22,11 @@ normal = Vector2(-1, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_iaow0"]
 normal = Vector2(1, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0qy5o"]
-shader = ExtResource("11_yb21e")
-shader_parameter/Color = Color(0, 0.39215687, 0.29803923, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yb21e"]
-shader = ExtResource("11_yb21e")
-shader_parameter/Color = Color(1, 0, 0, 1)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5wyu1"]
-texture = ExtResource("8_0c07c")
-texture_region_size = Vector2i(64, 64)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-0:1/0 = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-1:1/0 = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-
-[sub_resource type="TileSet" id="TileSet_0c07c"]
-tile_size = Vector2i(64, 64)
-physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_5wyu1")
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iaow0"]
 size = Vector2(128, 384)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7nf3m"]
-shader = ExtResource("11_yb21e")
-shader_parameter/Color = Color(0, 0.2999999, 0.75, 1)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yb21e"]
 size = Vector2(128, 64)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mie3u"]
-shader = ExtResource("11_yb21e")
-shader_parameter/Color = Color(2.4546682e-06, 0.6290402, 0.4771096, 1)
 
 [node name="Test" type="Node2D" unique_id=1551045587]
 
@@ -77,113 +45,15 @@ position = Vector2(16, 640)
 shape = SubResource("WorldBoundaryShape2D_iaow0")
 metadata/_edit_lock_ = true
 
-[node name="BoxInterface" type="CanvasLayer" parent="." unique_id=352811336]
-follow_viewport_scale = 1.1
-
-[node name="PanelContainer" type="PanelContainer" parent="BoxInterface" unique_id=1616461440]
-anchors_preset = -1
-anchor_left = 0.75000006
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 24.0
-offset_right = -20.0
-offset_bottom = -16.0
-grow_horizontal = 2
-theme = ExtResource("3_5wyu1")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BoxInterface/PanelContainer" unique_id=1206112724]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InsideBox" type="GridContainer" parent="BoxInterface/PanelContainer/VBoxContainer" unique_id=830877938]
-custom_minimum_size = Vector2(256, 256)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-columns = 2
-script = ExtResource("4_0c07c")
-volume_limit = 4
-box = true
-metadata/_custom_type_script = "uid://b7q67txy4m1ew"
-
-[node name="Item" parent="BoxInterface/PanelContainer/VBoxContainer/InsideBox" unique_id=540643436 node_paths=PackedStringArray("object") instance=ExtResource("5_2cgwh")]
-material = SubResource("ShaderMaterial_0qy5o")
-layout_mode = 2
-icon = ExtResource("5_0qy5o")
-item = ExtResource("6_yb21e")
-id = 2
-object = NodePath("../../../../../2")
-
-[node name="MarginContainer" type="MarginContainer" parent="BoxInterface/PanelContainer/VBoxContainer" unique_id=1337455871]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-
-[node name="OutsideBox" type="GridContainer" parent="BoxInterface/PanelContainer/VBoxContainer" unique_id=1199782496]
-custom_minimum_size = Vector2(0, 650)
-layout_mode = 2
-size_flags_vertical = 4
-columns = 3
-script = ExtResource("4_0c07c")
-volume_limit = 600
-metadata/_custom_type_script = "uid://b7q67txy4m1ew"
-
-[node name="Item1" parent="BoxInterface/PanelContainer/VBoxContainer/OutsideBox" unique_id=1001665694 instance=ExtResource("5_2cgwh")]
-material = SubResource("ShaderMaterial_yb21e")
-layout_mode = 2
-
-[node name="Item2" parent="BoxInterface/PanelContainer/VBoxContainer/OutsideBox" unique_id=1648468397 instance=ExtResource("5_2cgwh")]
-layout_mode = 2
-
-[node name="Item3" parent="BoxInterface/PanelContainer/VBoxContainer/OutsideBox" unique_id=1853010698 instance=ExtResource("5_2cgwh")]
-layout_mode = 2
-
-[node name="Item4" parent="BoxInterface/PanelContainer/VBoxContainer/OutsideBox" unique_id=2032995252 instance=ExtResource("5_2cgwh")]
-layout_mode = 2
-
-[node name="Item5" parent="BoxInterface/PanelContainer/VBoxContainer/OutsideBox" unique_id=954169863 instance=ExtResource("5_2cgwh")]
-layout_mode = 2
-
-[node name="Item6" parent="BoxInterface/PanelContainer/VBoxContainer/OutsideBox" unique_id=1667683016 instance=ExtResource("5_2cgwh")]
-layout_mode = 2
-
-[node name="Item7" parent="BoxInterface/PanelContainer/VBoxContainer/OutsideBox" unique_id=1246465843 instance=ExtResource("5_2cgwh")]
-layout_mode = 2
-
-[node name="Item8" parent="BoxInterface/PanelContainer/VBoxContainer/OutsideBox" unique_id=194256821 instance=ExtResource("5_2cgwh")]
-layout_mode = 2
-
-[node name="Item9" parent="BoxInterface/PanelContainer/VBoxContainer/OutsideBox" unique_id=729202819 instance=ExtResource("5_2cgwh")]
-layout_mode = 2
-
-[node name="Item10" parent="BoxInterface/PanelContainer/VBoxContainer/OutsideBox" unique_id=1645122374 instance=ExtResource("5_2cgwh")]
-layout_mode = 2
-
-[node name="Item11" parent="BoxInterface/PanelContainer/VBoxContainer/OutsideBox" unique_id=1946752728 instance=ExtResource("5_2cgwh")]
-layout_mode = 2
-
-[node name="Item12" parent="BoxInterface/PanelContainer/VBoxContainer/OutsideBox" unique_id=1554029988 instance=ExtResource("5_2cgwh")]
-layout_mode = 2
-
-[node name="Item13" parent="BoxInterface/PanelContainer/VBoxContainer/OutsideBox" unique_id=1691220344 instance=ExtResource("5_2cgwh")]
-layout_mode = 2
-
-[node name="Item14" parent="BoxInterface/PanelContainer/VBoxContainer/OutsideBox" unique_id=1419287842 instance=ExtResource("5_2cgwh")]
-layout_mode = 2
-
-[node name="Item15" parent="BoxInterface/PanelContainer/VBoxContainer/OutsideBox" unique_id=517768844 instance=ExtResource("5_2cgwh")]
-layout_mode = 2
-
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1626687353]
 position = Vector2(0, 960)
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAABAAAAAAABAAAAAAABAAEAAAABAAEAAAACAAAAAAAAAAAAAAACAAEAAAAAAAEAAAADAAAAAAABAAAAAAADAAEAAAABAAEAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAEAAAAFAAAAAAABAAAAAAAFAAEAAAABAAEAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAEAAAAHAAAAAAABAAAAAAAHAAEAAAABAAEAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAEAAAAJAAAAAAABAAAAAAAJAAEAAAABAAEAAAAKAAAAAAAAAAAAAAAKAAEAAAAAAAEAAAALAAAAAAABAAAAAAALAAEAAAABAAEAAAAMAAAAAAAAAAAAAAAMAAEAAAAAAAEAAAANAAAAAAABAAAAAAANAAEAAAABAAEAAAAOAAAAAAAAAAAAAAAOAAEAAAAAAAEAAAAPAAAAAAABAAAAAAAPAAEAAAABAAEAAAAQAAAAAAAAAAAAAAAQAAEAAAAAAAEAAAARAAAAAAABAAAAAAARAAEAAAABAAEAAAASAAAAAAAAAAAAAAASAAEAAAAAAAEAAAATAAAAAAABAAAAAAATAAEAAAABAAEAAAAUAAAAAAAAAAAAAAAUAAEAAAAAAAEAAAAVAAAAAAABAAAAAAAVAAEAAAABAAEAAAAWAAAAAAAAAAAAAAAWAAEAAAAAAAEAAAAXAAAAAAABAAAAAAAXAAEAAAABAAEAAAAYAAAAAAAAAAAAAAAYAAEAAAAAAAEAAAAZAAAAAAABAAAAAAAZAAEAAAABAAEAAAAaAAAAAAAAAAAAAAAaAAEAAAAAAAEAAAAbAAAAAAABAAAAAAAbAAEAAAABAAEAAAAcAAAAAAAAAAAAAAAcAAEAAAAAAAEAAAAdAAAAAAABAAAAAAAdAAEAAAABAAEAAAA=")
-tile_set = SubResource("TileSet_0c07c")
+tile_set = ExtResource("2_aees8")
 
 [node name="1" type="StaticBody2D" parent="." unique_id=1950348525 node_paths=PackedStringArray("box", "collision_2d", "sprite_2d")]
 position = Vector2(736, 768)
 script = ExtResource("8_2cgwh")
-box = NodePath("../BoxInterface/PanelContainer/VBoxContainer/InsideBox")
+box = NodePath("../BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox")
 collision_2d = NodePath("CollisionShape2D")
 sprite_2d = NodePath("Sprite2D")
 
@@ -192,7 +62,7 @@ shape = SubResource("RectangleShape2D_iaow0")
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="1" unique_id=203417538]
-material = SubResource("ShaderMaterial_7nf3m")
+material = ExtResource("15_7nf3m")
 position = Vector2(0, 96)
 rotation = 1.5707964
 scale = Vector2(0.50000024, 0.5000001)
@@ -208,7 +78,7 @@ level = ExtResource("10_iaow0")
 position = Vector2(1280, 864)
 script = ExtResource("8_2cgwh")
 id = 2
-box = NodePath("../BoxInterface/PanelContainer/VBoxContainer/InsideBox")
+box = NodePath("../BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox")
 collision_2d = NodePath("CollisionShape2D")
 sprite_2d = NodePath("Sprite2D")
 
@@ -218,7 +88,7 @@ metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="2" unique_id=1400806701]
 texture_repeat = 2
-material = SubResource("ShaderMaterial_mie3u")
+material = ExtResource("8_0qy5o")
 position = Vector2(3.8146973e-05, 1.04904175e-05)
 scale = Vector2(0.33333302, 0.25000003)
 texture = ExtResource("12_aees8")
@@ -235,3 +105,25 @@ limit_bottom = 1080
 script = ExtResource("14_mie3u")
 PLAYER = NodePath("..")
 metadata/_custom_type_script = "uid://c52xh8xbqn2i1"
+
+[node name="BoxInterface" parent="." unique_id=2091224111 instance=ExtResource("10_qpfo2")]
+
+[node name="Item" parent="BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox" parent_id_path=PackedInt32Array(2091224111, 527385168) index="0" unique_id=540643436 node_paths=PackedStringArray("object") instance=ExtResource("5_2cgwh")]
+material = ExtResource("8_0qy5o")
+layout_mode = 2
+icon = ExtResource("5_0qy5o")
+item = ExtResource("6_yb21e")
+id = 2
+object = NodePath("../../../../../../2")
+
+[node name="Item1" parent="BoxInterface/PanelContainer/VBoxContainer/OutsideBox" parent_id_path=PackedInt32Array(2091224111, 1854341907) index="0" unique_id=1726545559 node_paths=PackedStringArray("object")]
+material = ExtResource("15_7nf3m")
+icon = ExtResource("5_0qy5o")
+item = ExtResource("6_yb21e")
+id = 1
+object = NodePath("../../../../../1")
+
+[node name="Item2" parent="BoxInterface/PanelContainer/VBoxContainer/OutsideBox" parent_id_path=PackedInt32Array(2091224111, 1854341907) index="1" unique_id=1842494652]
+material = ExtResource("15_0qy5o")
+
+[editable path="BoxInterface"]
