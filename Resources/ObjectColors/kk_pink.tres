@@ -4,4 +4,4 @@
 
 [resource]
 shader = ExtResource("1_gk5js")
-shader_parameter/Color = Color(1, 0, 0, 1)
+shader_parameter/Color = Color(1, 0, 0.3333335, 1)

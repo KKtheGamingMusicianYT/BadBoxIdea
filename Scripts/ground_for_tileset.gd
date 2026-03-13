@@ -4,6 +4,8 @@ class_name GroundTileset
 @export var sprite : Sprite2D
 
 func _ready() -> void:
-	var parent : TileMapLayer= get_parent()
+	if get_parent() is not TileMapLayer:
+		return
+	var parent : TileMapLayer = get_parent()
 	material = parent.material
 	sprite.material = material

@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bx7japdg7ed76"]
 
-[ext_resource type="Theme" uid="uid://bbod45f0la5hg" path="res://Scripts/ResourceScripts/Resources/Themes/box_interface_theme.tres" id="1_08o4a"]
+[ext_resource type="Theme" uid="uid://bbod45f0la5hg" path="res://Resources/Themes/box_interface_theme.tres" id="1_08o4a"]
 [ext_resource type="Shader" uid="uid://t04abpxnm5vu" path="res://Scripts/Shaders/color_shader.tres" id="1_btogu"]
 [ext_resource type="Script" uid="uid://clphw1ctqar7" path="res://Scripts/item.gd" id="3_o34di"]
-[ext_resource type="Resource" uid="uid://brk62snwafh8d" path="res://Scripts/ResourceScripts/Resources/blank.tres" id="4_btogu"]
+[ext_resource type="Resource" uid="uid://brk62snwafh8d" path="res://Resources/blank.tres" id="4_btogu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_btogu"]
 shader = ExtResource("1_btogu")

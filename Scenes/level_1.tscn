@@ -1,12 +1,158 @@
-[gd_scene format=3 uid="uid://ig4368f766is"]
+[gd_scene format=4 uid="uid://ig4368f766is"]
 
+[ext_resource type="Material" uid="uid://hs6fydc27bmt" path="res://Resources/ObjectColors/kk_pink.tres" id="1_7p6j4"]
 [ext_resource type="PackedScene" uid="uid://b38x0l1gd3w7w" path="res://Scenes/Player.tscn" id="1_vk57k"]
+[ext_resource type="TileSet" uid="uid://dpqhevuc17ijh" path="res://Resources/block_tileset.tres" id="3_7p6j4"]
 [ext_resource type="PackedScene" uid="uid://coefif7s7p7tm" path="res://Scenes/box_interface.tscn" id="3_xfk5q"]
+[ext_resource type="PackedScene" uid="uid://b55edq5uh3pp3" path="res://Scenes/borders.tscn" id="4_6444e"]
+[ext_resource type="Texture2D" uid="uid://bn6l2vtf6ruv0" path="res://Assets/Sprites/Block/Size0001.png" id="6_af3po"]
+[ext_resource type="Script" uid="uid://l47uf8luj8s6" path="res://Scripts/node_with_id.gd" id="6_uy8f0"]
+[ext_resource type="PackedScene" uid="uid://bx7japdg7ed76" path="res://Scenes/item.tscn" id="6_wrinw"]
+[ext_resource type="Material" uid="uid://bkxbwyecreq0c" path="res://Resources/ObjectColors/violet.tres" id="7_chwpn"]
+[ext_resource type="Texture2D" uid="uid://clg8samn7gqkr" path="res://Assets/Sprites/Block/Size0000.png" id="8_af3po"]
+[ext_resource type="PackedScene" uid="uid://dhyync7cvqavl" path="res://Scenes/goal.tscn" id="9_6r07y"]
+[ext_resource type="Script" uid="uid://dd25n2sul3wg4" path="res://Scripts/ResourceScripts/item_data.gd" id="9_uy8f0"]
+[ext_resource type="PackedScene" uid="uid://6oispmhnqw68" path="res://Scenes/level_2.tscn" id="10_6ioyp"]
+[ext_resource type="Material" uid="uid://bdjajef7ak5x8" path="res://Resources/ObjectColors/teal.tres" id="12_uy8f0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chwpn"]
+size = Vector2(128, 256)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6r07y"]
+load_path = "res://.godot/imported/Size0002.png-a5caec008f90b38f2eea7e3c86c7d68c.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6ioyp"]
+load_path = "res://.godot/imported/Size0002.png-a5caec008f90b38f2eea7e3c86c7d68c.ctex"
+
+[sub_resource type="Resource" id="Resource_uy8f0"]
+script = ExtResource("9_uy8f0")
+volume = 3
+icon = ExtResource("8_af3po")
+metadata/_custom_type_script = "uid://dd25n2sul3wg4"
+
+[sub_resource type="Resource" id="Resource_6r07y"]
+script = ExtResource("9_uy8f0")
+volume = 2
+icon = ExtResource("8_af3po")
+metadata/_custom_type_script = "uid://dd25n2sul3wg4"
 
 [node name="level_1" type="Node2D" unique_id=52299712]
 
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=381755357]
+material = ExtResource("1_7p6j4")
+position = Vector2(0, -32)
+tile_map_data = PackedByteArray("AAAAAAcAAQAAAAAAAQABAAcAAQAAAAAAAQACAAcAAQAAAAAAAQADAAcAAQAAAAAAAQAEAAcAAQAAAAAAAQAFAAcAAQAAAAAAAQAKAAcAAQAAAAAAAQALAAcAAQAAAAAAAQAMAAcAAQAAAAAAAQANAAcAAQAAAAAAAQAOAAcAAQAAAAAAAQAOAAgAAQAAAAAAAQANAAgAAQAAAAAAAQAMAAgAAQAAAAAAAQALAAgAAQAAAAAAAQAKAAgAAQAAAAAAAQAJAAgAAQAAAAAAAQAIAAgAAQAAAAAAAQAHAAgAAQAAAAAAAQAGAAgAAQAAAAAAAQAFAAgAAQAAAAAAAQAEAAgAAQAAAAAAAQADAAgAAQAAAAAAAQACAAgAAQAAAAAAAQABAAgAAQAAAAAAAQAAAAgAAQAAAAAAAQAPAAcAAQAAAAAAAQAPAAgAAQAAAAAAAQA=")
+tile_set = ExtResource("3_7p6j4")
+
 [node name="Player" parent="." unique_id=404843843 instance=ExtResource("1_vk57k")]
+position = Vector2(192, 832)
+
+[node name="PlayerCamera" parent="Player" index="0" unique_id=744180924]
+limit_top = 0
+limit_right = 2048
+
+[node name="Borders" parent="." unique_id=999858988 instance=ExtResource("4_6444e")]
+
+[node name="RBoarder" parent="Borders" index="0" unique_id=932751578 node_paths=PackedStringArray("camera")]
+camera = NodePath("../../Player/PlayerCamera")
+
+[node name="1" type="StaticBody2D" parent="." unique_id=1638190584 node_paths=PackedStringArray("box", "collision_2d")]
+position = Vector2(512, 736)
+script = ExtResource("6_uy8f0")
+box = NodePath("../BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox")
+collision_2d = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="1" unique_id=1127563313]
+shape = SubResource("RectangleShape2D_chwpn")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="1" unique_id=761816044]
+material = ExtResource("7_chwpn")
+position = Vector2(-5.722046e-06, -7.6293945e-06)
+rotation = 1.5707964
+scale = Vector2(0.667, 0.5)
+texture = ExtResource("6_af3po")
+region_enabled = true
+region_rect = Rect2(0, 128, 384, 256)
+metadata/_edit_lock_ = true
+
+[node name="2" type="StaticBody2D" parent="." unique_id=1869924856 node_paths=PackedStringArray("box", "collision_2d")]
+position = Vector2(896, 800)
+script = ExtResource("6_uy8f0")
+id = 2
+box = NodePath("../BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox")
+collision_2d = NodePath("CollisionPolygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="2" unique_id=806183826]
+polygon = PackedVector2Array(-64, -64, 64, -64, 64, -160, 192, -160, 192, -256, 320, -256, 320, 64, -64, 64)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="2" unique_id=1241984645]
+material = ExtResource("12_uy8f0")
+position = Vector2(-1.1444092e-05, 0)
+scale = Vector2(0.50000006, 0.5)
+texture = SubResource("CompressedTexture2D_6r07y")
+region_enabled = true
+region_rect = Rect2(128, 128, 256, 256)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2" type="Sprite2D" parent="2" unique_id=943804511]
+material = ExtResource("12_uy8f0")
+position = Vector2(128, -48)
+scale = Vector2(0.50000006, 0.875)
+texture = SubResource("CompressedTexture2D_6ioyp")
+region_enabled = true
+region_rect = Rect2(128, 128, 256, 256)
+metadata/_edit_lock_ = true
+
+[node name="Sprite3" type="Sprite2D" parent="2" unique_id=1458930802]
+material = ExtResource("12_uy8f0")
+position = Vector2(255.99994, -15.999989)
+scale = Vector2(0.50000006, 0.6249999)
+texture = SubResource("CompressedTexture2D_6ioyp")
+region_enabled = true
+region_rect = Rect2(128, 128, 256, 256)
+metadata/_edit_lock_ = true
+
+[node name="Sprite4" type="Sprite2D" parent="2" unique_id=1970459715]
+material = ExtResource("12_uy8f0")
+position = Vector2(255.99994, -176)
+scale = Vector2(0.50000006, 0.6249999)
+texture = SubResource("CompressedTexture2D_6ioyp")
+region_enabled = true
+region_rect = Rect2(128, 128, 256, 256)
+metadata/_edit_lock_ = true
+
+[node name="Goal" parent="." unique_id=1043991833 instance=ExtResource("9_6r07y")]
+position = Vector2(1344, 480)
+level = ExtResource("10_6ioyp")
 
 [node name="BoxInterface" parent="." unique_id=2091224111 instance=ExtResource("3_xfk5q")]
 
+[node name="Item" parent="BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox" parent_id_path=PackedInt32Array(2091224111, 527385168) index="0" unique_id=540643436 node_paths=PackedStringArray("object") instance=ExtResource("6_wrinw")]
+material = ExtResource("12_uy8f0")
+layout_mode = 2
+icon = ExtResource("8_af3po")
+item = SubResource("Resource_uy8f0")
+id = 2
+object = NodePath("../../../../../../2")
+
+[node name="Item2" parent="BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox" parent_id_path=PackedInt32Array(2091224111, 527385168) index="1" unique_id=1724416698 instance=ExtResource("6_wrinw")]
+layout_mode = 2
+
+[node name="Item3" parent="BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox" parent_id_path=PackedInt32Array(2091224111, 527385168) index="2" unique_id=1613325893 instance=ExtResource("6_wrinw")]
+layout_mode = 2
+
+[node name="Item4" parent="BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox" parent_id_path=PackedInt32Array(2091224111, 527385168) index="3" unique_id=1347569158 instance=ExtResource("6_wrinw")]
+layout_mode = 2
+
+[node name="Item1" parent="BoxInterface/PanelContainer/VBoxContainer/OutsideBox" parent_id_path=PackedInt32Array(2091224111, 1854341907) index="0" unique_id=1726545559 node_paths=PackedStringArray("object")]
+material = ExtResource("7_chwpn")
+icon = ExtResource("8_af3po")
+item = SubResource("Resource_6r07y")
+id = 1
+object = NodePath("../../../../../1")
+
+[editable path="Player"]
+[editable path="Borders"]
 [editable path="BoxInterface"]
