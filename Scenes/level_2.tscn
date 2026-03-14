@@ -47,7 +47,7 @@ tile_map_data = PackedByteArray("AAAAAAgAAQAAAAAAAQABAAgAAQAAAAAAAQACAAgAAQAAAAA
 tile_set = ExtResource("2_7p6j4")
 
 [node name="1" type="StaticBody2D" parent="." unique_id=102639431 node_paths=PackedStringArray("box", "collision_2d")]
-position = Vector2(1184, 768)
+position = Vector2(1184, 832)
 script = ExtResource("10_af3po")
 box = NodePath("../BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox")
 collision_2d = NodePath("CollisionShape2D")
@@ -65,7 +65,7 @@ texture = ExtResource("10_chwpn")
 metadata/_edit_lock_ = true
 
 [node name="2" type="RigidBody2D" parent="." unique_id=1556049865 node_paths=PackedStringArray("box", "collision_2d")]
-position = Vector2(1280, 704)
+position = Vector2(1371, 928)
 mass = 0.5
 script = ExtResource("10_af3po")
 id = 2
@@ -74,12 +74,14 @@ collision_2d = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="2" unique_id=940290411]
 shape = SubResource("RectangleShape2D_oovug")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="2" unique_id=1678216343]
 material = ExtResource("6_6r07y")
 position = Vector2(-16, -16)
 scale = Vector2(0.24999996, 0.25000006)
 texture = ExtResource("13_6ioyp")
+metadata/_edit_lock_ = true
 
 [node name="BoxInterface" parent="." unique_id=2091224111 instance=ExtResource("5_6444e")]
 

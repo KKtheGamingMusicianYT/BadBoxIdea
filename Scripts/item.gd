@@ -3,19 +3,23 @@ class_name Item
 @export var item : ItemData
 @export var id : int = 0
 @export var object : NodeWithID
+@onready var point_light_2d: PointLight2D = $PointLight2D
 var parent : BoxInterfaceGridContainer
 var hidden_icon : Texture2D
 
 func _ready() -> void:
 	icon = item.icon
 	expand_icon = true
-	#if object != null:
-	#	material = object.sprite_2d.material
+	hidden_icon = icon
 
 func _process(_delta: float) -> void:
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		self_modulate.a = 100
-		#icon = hidden_icon
+		icon = hidden_icon
+	if icon == null:
+		point_light_2d.visible = false
+	else:
+		point_light_2d.visible = true
 	
 func recieve_parent(reference: BoxInterfaceGridContainer) -> void:
 	parent = reference
@@ -25,9 +29,7 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	if item == null or item.icon == null:
 		return
 	_create_preview()
-	self_modulate.a = 0
-	#hidden_icon = icon
-	#icon = null
+	icon = null
 	return self
 
 func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:
@@ -41,6 +43,17 @@ func _drop_data(_at_position: Vector2, Data: Variant) -> void:
 		if data.parent.get_volume_of_children() + item.volume - data.item.volume > data.parent.volume_limit:
 			return
 	data.parent.get_id_of_children()
+	_swap_properties(data)
+func _create_preview() -> void:
+	var preview : Button = duplicate()
+	var control_for_preview = Control.new()
+	# Add the preview to the control node's tree
+	control_for_preview.add_child(preview)
+	# Adjust the position
+	preview.position = Vector2(-64, -64)
+	set_drag_preview(control_for_preview)
+	
+func _swap_properties(data : Item) -> void:
 	# Swap the properties
 	var item_swapped = item
 	item = data.item
@@ -57,14 +70,9 @@ func _drop_data(_at_position: Vector2, Data: Variant) -> void:
 	material = data.material
 	data.material = material_swapped
 	
+	var hidden_icon_swapped = hidden_icon
+	hidden_icon = data.hidden_icon
+	data.hidden_icon = hidden_icon_swapped
+	
 	parent.get_id_of_children()
 	data.parent.get_id_of_children()
-
-func _create_preview() -> void:
-	var preview : Button = duplicate()
-	var control_for_preview = Control.new()
-	# Add the preview to the control node's tree
-	control_for_preview.add_child(preview)
-	# Adjust the position
-	preview.position = Vector2(-64, -64)
-	set_drag_preview(control_for_preview)

@@ -11,6 +11,9 @@ texture = ExtResource("2_7f475")
 [node name="BoxInterface" type="CanvasLayer" unique_id=2091224111]
 follow_viewport_scale = 1.1
 
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1413081877]
+color = Color(0.5, 0.5, 0.5, 1)
+
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1137164658]
 anchors_preset = -1
 anchor_left = 0.75000006

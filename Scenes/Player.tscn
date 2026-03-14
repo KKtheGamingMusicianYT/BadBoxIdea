@@ -34,6 +34,16 @@
 script = ExtResource("2_8erm5")
 metadata/_custom_type_script = "uid://bnmqtw3dx3iyv"
 
+[sub_resource type="Gradient" id="Gradient_kih0c"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lyrkg"]
+gradient = SubResource("Gradient_kih0c")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_bhhdu"]
 animations = [{
 "frames": [{
@@ -107,24 +117,27 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_megsn"]
 size = Vector2(32, 56)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ksbbd"]
+size = Vector2(48, 8)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yoq75"]
 size = Vector2(64, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ksbbd"]
-size = Vector2(48, 8)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kih0c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_glx4g"]
 size = Vector2(10, 10)
 
-[node name="Player" type="CharacterBody2D" unique_id=404843843 node_paths=PackedStringArray("BUFFER_JUMP_TIMER", "SMALL_PHYSICS_BOX", "COYOTE_BOX", "GAP_CENSOR", "FLOOR_WALL_CENSOR", "GAP_BOX", "CLIP_LEFT", "CLIP_RIGHT", "CEILING_SENSOR", "CHARACTER_ANIMATED_SPRITE", "state_machine")]
+[node name="Player" type="CharacterBody2D" unique_id=404843843 node_paths=PackedStringArray("BUFFER_JUMP_TIMER", "SMALL_PHYSICS_BOX", "COYOTE_BOX", "GAP_BOX", "GAP_CENSOR", "WALL_CENSOR", "FLOOR_WALL_CENSOR", "CLIP_LEFT", "CLIP_RIGHT", "CEILING_SENSOR", "CHARACTER_ANIMATED_SPRITE", "state_machine")]
 z_index = 100
 script = ExtResource("1_v0iea")
 BUFFER_JUMP_TIMER = NodePath("BufferJumpTimer")
 SMALL_PHYSICS_BOX = NodePath("SmallPhysicsHitBox")
 COYOTE_BOX = NodePath("CoyoteBox")
-GAP_CENSOR = NodePath("GapCensor")
-FLOOR_WALL_CENSOR = NodePath("FloorWallCensor")
 GAP_BOX = NodePath("GapBox")
+GAP_CENSOR = NodePath("GapCensor")
+WALL_CENSOR = NodePath("WallCensor")
+FLOOR_WALL_CENSOR = NodePath("FloorWallCensor")
 CLIP_LEFT = NodePath("ClipCeilingSensors/ClipLeft")
 CLIP_RIGHT = NodePath("ClipCeilingSensors/ClipRight")
 CEILING_SENSOR = NodePath("ClipCeilingSensors/CeilingSensor")
@@ -140,6 +153,17 @@ script = ExtResource("29_kih0c")
 PLAYER = NodePath("..")
 metadata/_custom_type_script = "uid://c52xh8xbqn2i1"
 metadata/_edit_lock_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1242096905]
+position = Vector2(0, -20)
+scale = Vector2(3, 3)
+color = Color(0.74509805, 0.99607843, 0.9137255, 1)
+energy = 1.5
+blend_mode = 2
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 1
+texture = SubResource("GradientTexture2D_lyrkg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=396514442]
 scale = Vector2(0.5, 0.5)
@@ -164,6 +188,10 @@ polygon = PackedVector2Array(-16, 40, 16, 40, 16, 24, -16, 24)
 disabled = true
 one_way_collision = true
 
+[node name="GapBox" type="CollisionShape2D" parent="." unique_id=514765509]
+position = Vector2(0, 28)
+shape = SubResource("RectangleShape2D_ksbbd")
+
 [node name="GapCensor" type="RayCast2D" parent="." unique_id=1998703868]
 position = Vector2(0, 32)
 target_position = Vector2(0, 32)
@@ -174,9 +202,10 @@ shape = SubResource("RectangleShape2D_yoq75")
 target_position = Vector2(0, 0)
 metadata/_edit_lock_ = true
 
-[node name="GapBox" type="CollisionShape2D" parent="." unique_id=514765509]
-position = Vector2(0, 28)
-shape = SubResource("RectangleShape2D_ksbbd")
+[node name="WallCensor" type="ShapeCast2D" parent="." unique_id=1770420341]
+position = Vector2(-24, 0)
+shape = SubResource("RectangleShape2D_kih0c")
+target_position = Vector2(48, 0)
 
 [node name="ClipCeilingSensors" type="Node2D" parent="." unique_id=910299419]
 metadata/_edit_lock_ = true

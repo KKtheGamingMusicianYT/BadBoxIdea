@@ -5,11 +5,24 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_850ti"]
 radius = 32.0
 
-[sub_resource type="Gradient" id="Gradient_7hjqj"]
-colors = PackedColorArray(0.33333325, 1, 0, 1, 0.33333325, 1, 0, 0)
+[sub_resource type="Gradient" id="Gradient_s0pnd"]
+offsets = PackedFloat32Array(0.4231041, 1)
+colors = PackedColorArray(0.33333334, 1, 0, 1, 0.33333325, 1, 0, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ugxcw"]
-gradient = SubResource("Gradient_7hjqj")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2lgk0"]
+gradient = SubResource("Gradient_s0pnd")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_paeek"]
+offsets = PackedFloat32Array(0.6, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_paeek"]
+gradient = SubResource("Gradient_paeek")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
@@ -21,7 +34,13 @@ script = ExtResource("1_7hjqj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1315110370]
 shape = SubResource("CircleShape2D_850ti")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1951318040]
-texture = SubResource("GradientTexture2D_ugxcw")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1557527945]
+scale = Vector2(2, 2)
+texture = SubResource("GradientTexture2D_2lgk0")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=640969441]
+position = Vector2(-0.00012207031, 0)
+scale = Vector2(5.5625, 5.736328)
+texture = SubResource("GradientTexture2D_paeek")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

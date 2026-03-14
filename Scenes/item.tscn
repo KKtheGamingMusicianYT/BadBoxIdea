@@ -9,6 +9,19 @@
 shader = ExtResource("1_btogu")
 shader_parameter/Color = Color(1, 0, 0, 1)
 
+[sub_resource type="Gradient" id="Gradient_6ioyp"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_btogu"]
+gradient = SubResource("Gradient_6ioyp")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
 [node name="Item" type="Button" unique_id=540643436]
 material = SubResource("ShaderMaterial_btogu")
 custom_minimum_size = Vector2(128, 128)
@@ -20,3 +33,11 @@ expand_icon = true
 script = ExtResource("3_o34di")
 item = ExtResource("4_btogu")
 metadata/_custom_type_script = "uid://clphw1ctqar7"
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=2130603138]
+position = Vector2(64, 64)
+scale = Vector2(4, 4)
+energy = 2.0
+blend_mode = 2
+range_layer_max = 1
+texture = SubResource("GradientTexture2D_btogu")

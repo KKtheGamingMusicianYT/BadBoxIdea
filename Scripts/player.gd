@@ -12,9 +12,11 @@ var collision_shape : CollisionShape2D
 
 @export_subgroup("Coyote Jumping and Gap Running")
 @export var COYOTE_BOX : CollisionPolygon2D
-@export var GAP_CENSOR : RayCast2D
-@export var FLOOR_WALL_CENSOR : ShapeCast2D
 @export var GAP_BOX : CollisionShape2D
+@export var GAP_CENSOR : RayCast2D
+@export var WALL_CENSOR : ShapeCast2D
+@export var FLOOR_WALL_CENSOR : ShapeCast2D
+
 
 @export_subgroup("Edge Clipping")
 @export var CLIP_LEFT : RayCast2D
@@ -50,13 +52,7 @@ func _physics_process(_delta: float) -> void:
 	_update_physics_box()
 	_handle_player_input()
 	move_and_slide()
-	for i in get_slide_collision_count():
-		var c = get_slide_collision(i)
-		if c.get_collider() is RigidBody2D:
-			var push_force = (PUSH_FORCE * velocity.x / properties.VELOCITY.x) + 15
-			c.get_collider().apply_central_impulse(Vector2(direction, 0) * push_force) #* -c.get_normal())
-			print(push_force)
-
+	
 func _handle_player_input() -> void:
 	direction = Input.get_axis("Move_Left", "Move_Right")
 	if Input.is_action_just_pressed("Jump"): # Start the BufferJumpTimer when you try to jump
@@ -96,9 +92,11 @@ func _match_states() -> void:
 				change_state(RUN)
 			_check_jumping()
 			_check_just_left_floor()
-			_check_gap_running()
+			#_check_gap_running()
 			if is_on_floor():
 				COYOTE_BOX.disabled = true
+			if WALL_CENSOR.is_colliding() and not GAP_CENSOR.is_colliding():
+				direction = 0
 			_animate("Walk")
 		RUN:
 			if not direction:
@@ -107,9 +105,11 @@ func _match_states() -> void:
 				change_state(WALK)
 			_check_jumping()
 			_check_just_left_floor()
-			_check_gap_running()
+			#_check_gap_running()
 			if is_on_floor():
 				COYOTE_BOX.disabled = true
+			if WALL_CENSOR.is_colliding() and not GAP_CENSOR.is_colliding():
+				direction = 0
 			_animate("Walk")
 		JUMP:
 			if direction:
@@ -127,6 +127,7 @@ func _match_states() -> void:
 				change_state(FALL) # Start falling
 				position.y += 8
 				BUFFER_JUMP_TIMER.stop()
+			_animate("Idle")
 		FALL:
 			if direction:
 				_adjust_max_velocity()
@@ -138,6 +139,7 @@ func _match_states() -> void:
 						change_state(WALK)
 				else:
 					change_state(IDLE)
+			_animate("Idle")
 		GOD_MODE:
 			var dir_vec2 : Vector2 = Vector2(Input.get_axis("Move_Left", "Move_Right"), Input.get_axis("ui_down", "ui_up"))
 			properties.VELOCITY = Vector2(700, -700)
