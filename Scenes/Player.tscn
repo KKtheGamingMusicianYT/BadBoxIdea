@@ -130,8 +130,10 @@ size = Vector2(10, 10)
 
 [node name="Player" type="CharacterBody2D" unique_id=404843843 node_paths=PackedStringArray("BUFFER_JUMP_TIMER", "SMALL_PHYSICS_BOX", "COYOTE_BOX", "GAP_BOX", "GAP_CENSOR", "WALL_CENSOR", "FLOOR_WALL_CENSOR", "CLIP_LEFT", "CLIP_RIGHT", "CEILING_SENSOR", "CHARACTER_ANIMATED_SPRITE", "state_machine")]
 z_index = 100
+collision_layer = 2
 script = ExtResource("1_v0iea")
 BUFFER_JUMP_TIMER = NodePath("BufferJumpTimer")
+mass = 10.0
 SMALL_PHYSICS_BOX = NodePath("SmallPhysicsHitBox")
 COYOTE_BOX = NodePath("CoyoteBox")
 GAP_BOX = NodePath("GapBox")
@@ -164,6 +166,7 @@ shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 1
 texture = SubResource("GradientTexture2D_lyrkg")
+metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=396514442]
 scale = Vector2(0.5, 0.5)
@@ -187,14 +190,17 @@ position = Vector2(-24, -8)
 polygon = PackedVector2Array(-16, 40, 16, 40, 16, 24, -16, 24)
 disabled = true
 one_way_collision = true
+metadata/_edit_lock_ = true
 
 [node name="GapBox" type="CollisionShape2D" parent="." unique_id=514765509]
 position = Vector2(0, 28)
 shape = SubResource("RectangleShape2D_ksbbd")
+metadata/_edit_lock_ = true
 
 [node name="GapCensor" type="RayCast2D" parent="." unique_id=1998703868]
 position = Vector2(0, 32)
 target_position = Vector2(0, 32)
+metadata/_edit_lock_ = true
 
 [node name="FloorWallCensor" type="ShapeCast2D" parent="." unique_id=2092207570]
 position = Vector2(32, 32)
@@ -206,6 +212,7 @@ metadata/_edit_lock_ = true
 position = Vector2(-24, 0)
 shape = SubResource("RectangleShape2D_kih0c")
 target_position = Vector2(48, 0)
+metadata/_edit_lock_ = true
 
 [node name="ClipCeilingSensors" type="Node2D" parent="." unique_id=910299419]
 metadata/_edit_lock_ = true
@@ -214,16 +221,19 @@ metadata/_edit_lock_ = true
 position = Vector2(-16, -24)
 target_position = Vector2(0, -16)
 hit_from_inside = true
+metadata/_edit_lock_ = true
 
 [node name="ClipRight" type="RayCast2D" parent="ClipCeilingSensors" unique_id=2086803082]
 position = Vector2(16, -24)
 target_position = Vector2(0, -16)
 hit_from_inside = true
+metadata/_edit_lock_ = true
 
 [node name="CeilingSensor" type="ShapeCast2D" parent="ClipCeilingSensors" unique_id=1381089293]
 position = Vector2(0, -24)
 shape = SubResource("RectangleShape2D_glx4g")
 target_position = Vector2(0, -16)
+metadata/_edit_lock_ = true
 
 [node name="StateMachine" type="Node" parent="." unique_id=1805402115 node_paths=PackedStringArray("parent")]
 script = ExtResource("2_cvnsp")

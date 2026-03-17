@@ -4,7 +4,6 @@ class_name NodeWithID
 @export var id : int = 1
 @export var box : BoxInterfaceGridContainer
 @export var collision_2d : Node2D
-@export var sprite_2d: Array[Node2D]
 
 func _process(_delta: float) -> void:
 	if box.child_ids.find(id) != -1:

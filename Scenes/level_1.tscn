@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://clg8samn7gqkr" path="res://Assets/Sprites/Block/Size0000.png" id="8_af3po"]
 [ext_resource type="PackedScene" uid="uid://dhyync7cvqavl" path="res://Scenes/goal.tscn" id="9_6r07y"]
 [ext_resource type="Script" uid="uid://dd25n2sul3wg4" path="res://Scripts/ResourceScripts/item_data.gd" id="9_uy8f0"]
-[ext_resource type="PackedScene" uid="uid://6oispmhnqw68" path="res://Scenes/level_2.tscn" id="10_6ioyp"]
+[ext_resource type="PackedScene" uid="uid://6oispmhnqw68" path="res://Scenes/level_4.tscn" id="10_6ioyp"]
 [ext_resource type="Material" uid="uid://bdjajef7ak5x8" path="res://Resources/ObjectColors/teal.tres" id="12_uy8f0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chwpn"]

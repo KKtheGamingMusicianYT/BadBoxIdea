@@ -29,6 +29,7 @@ fill_to = Vector2(0.5, 0)
 metadata/_snap_enabled = true
 
 [node name="Goal" type="Area2D" unique_id=1043991833]
+collision_mask = 2
 script = ExtResource("1_7hjqj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1315110370]

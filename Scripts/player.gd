@@ -1,10 +1,9 @@
 extends CharacterBody
 class_name Player
 
-const PUSH_FORCE : float = 30.0
-
 @export var BUFFER_JUMP_TIMER : Timer
 @export var CAN_USE_GOD_MODE : bool = false
+@export_custom(PROPERTY_HINT_NONE, "suffix: kg") var mass : float = 1
 @export_group("Physics HitBoxes")
 
 @export var SMALL_PHYSICS_BOX : CollisionShape2D
@@ -53,6 +52,13 @@ func _physics_process(_delta: float) -> void:
 	_handle_player_input()
 	move_and_slide()
 	
+	for collision_number in get_slide_collision_count():
+		var collision = get_slide_collision(collision_number)
+		if collision.get_collider() is RigidBody2D:
+			var collider : RigidBody2D = collision.get_collider()
+			collider.apply_central_force(
+				Vector2(collision.get_normal().x * -1 * mass * properties.VELOCITY.x, 0)
+			)
 func _handle_player_input() -> void:
 	direction = Input.get_axis("Move_Left", "Move_Right")
 	if Input.is_action_just_pressed("Jump"): # Start the BufferJumpTimer when you try to jump
@@ -65,8 +71,6 @@ func _handle_player_input() -> void:
 		COYOTE_BOX.disabled = true
 
 func _update_box_dir() -> void:
-	#COYOTE_BOX.scale.x = direction
-	#FLOOR_WALL_CENSOR.scale.x = direction
 	COYOTE_BOX.position.x = coyot_box_pos.x * direction
 	FLOOR_WALL_CENSOR.position.x = floor_wall_censor_pos.x * direction
 
@@ -86,6 +90,7 @@ func _match_states() -> void:
 				if CAN_USE_GOD_MODE == true:
 					change_state(GOD_MODE)
 		WALK:
+			_adjust_max_velocity()
 			if not direction:
 				change_state(IDLE)
 			if Input.is_action_pressed("Run"):
@@ -99,6 +104,7 @@ func _match_states() -> void:
 				direction = 0
 			_animate("Walk")
 		RUN:
+			_adjust_max_velocity()
 			if not direction:
 				change_state(IDLE)
 			if not Input.is_action_pressed("Run"):
