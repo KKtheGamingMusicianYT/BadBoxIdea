@@ -1,0 +1,159 @@
+[gd_scene format=4 uid="uid://lantacwmwc42"]
+
+[ext_resource type="Material" uid="uid://bkxbwyecreq0c" path="res://Resources/ObjectColors/violet.tres" id="1_v3rpw"]
+[ext_resource type="TileSet" uid="uid://dpqhevuc17ijh" path="res://Resources/block_tileset.tres" id="2_12fag"]
+[ext_resource type="Material" uid="uid://hs6fydc27bmt" path="res://Resources/ObjectColors/kk_pink.tres" id="2_v36qu"]
+[ext_resource type="PackedScene" uid="uid://b38x0l1gd3w7w" path="res://Scenes/Player.tscn" id="3_1q6tm"]
+[ext_resource type="PackedScene" uid="uid://b55edq5uh3pp3" path="res://Scenes/borders.tscn" id="4_1q6tm"]
+[ext_resource type="PackedScene" uid="uid://coefif7s7p7tm" path="res://Scenes/box_interface.tscn" id="6_cggpd"]
+[ext_resource type="Script" uid="uid://l47uf8luj8s6" path="res://Scripts/node_with_id.gd" id="7_2mgoq"]
+[ext_resource type="Material" uid="uid://dy384xgghatsr" path="res://Resources/ObjectColors/royal_blue.tres" id="7_055b2"]
+[ext_resource type="PackedScene" uid="uid://bx7japdg7ed76" path="res://Scenes/item.tscn" id="7_t7v2y"]
+[ext_resource type="Texture2D" uid="uid://clg8samn7gqkr" path="res://Assets/Sprites/Block/Size0000.png" id="9_ait6c"]
+[ext_resource type="Script" uid="uid://dd25n2sul3wg4" path="res://Scripts/ResourceScripts/item_data.gd" id="10_vcilj"]
+
+[sub_resource type="Gradient" id="Gradient_8i23i"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cggpd"]
+gradient = SubResource("Gradient_8i23i")
+width = 1920
+height = 1080
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="Resource" id="Resource_bl0du"]
+script = ExtResource("10_vcilj")
+volume = 1
+icon = ExtResource("9_ait6c")
+metadata/_custom_type_script = "uid://dd25n2sul3wg4"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cggpd"]
+size = Vector2(256, 64)
+
+[sub_resource type="Gradient" id="Gradient_6ioyp"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_055b2"]
+gradient = SubResource("Gradient_6ioyp")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2mgoq"]
+load_path = "res://.godot/imported/Size0001.png-0205a8f3342cc7f15b1bbfa243eb6a13.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2mgoq"]
+size = Vector2(256, 64)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uhnj4"]
+gradient = SubResource("Gradient_6ioyp")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_42uki"]
+load_path = "res://.godot/imported/Size0001.png-0205a8f3342cc7f15b1bbfa243eb6a13.ctex"
+
+[node name="Level2" type="Node2D" unique_id=928379779]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1794164161]
+color = Color(0.7490196, 0.6745098, 0.9019608, 1)
+metadata/_edit_lock_ = true
+
+[node name="Background" type="Parallax2D" parent="." unique_id=1168102357]
+scroll_scale = Vector2(0, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="Background" unique_id=1303994077]
+light_mask = 0
+material = ExtResource("1_v3rpw")
+color = Color(0.27058825, 0, 0, 1)
+texture = SubResource("GradientTexture2D_cggpd")
+polygon = PackedVector2Array(-32, -32, 1952, -32, 1952, 1152, -32, 1152)
+metadata/_edit_lock_ = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1485204111]
+material = ExtResource("2_v36qu")
+position = Vector2(-64, -32)
+tile_map_data = PackedByteArray("AAD//wcAAQAAAAAAAQAAAAcAAQAAAAAAAQABAAcAAQAAAAAAAQACAAcAAQAAAAAAAQADAAcAAQAAAAAAAQAEAAcAAQAAAAAAAQAFAAcAAQAAAAAAAQAGAAcAAQAAAAAAAQAGAAgAAQAAAAAAAQAFAAgAAQAAAAAAAQAEAAgAAQAAAAAAAQADAAgAAQAAAAAAAQACAAgAAQAAAAAAAQABAAgAAQAAAAAAAQAAAAgAAQAAAAAAAQAHAAgAAQAAAAAAAQAHAAcAAQAAAAAAAQAPAAcAAQAAAAAAAQAQAAgAAQAAAAAAAQAQAAcAAQAAAAAAAQARAAgAAQAAAAAAAQARAAcAAQAAAAAAAQASAAgAAQAAAAAAAQASAAcAAQAAAAAAAQATAAgAAQAAAAAAAQAIAAYAAQAAAAAAAQAHAAUAAQAAAAAAAQAIAAUAAQAAAAAAAQAJAAUAAQAAAAAAAQAJAAYAAQAAAAAAAQAIAAcAAQAAAAAAAQAIAAgAAQAAAAAAAQAKAAUAAQAAAAAAAQAKAAYAAQAAAAAAAQAJAAcAAQAAAAAAAQAJAAgAAQAAAAAAAQA=")
+tile_set = ExtResource("2_12fag")
+
+[node name="Player" parent="." unique_id=404843843 instance=ExtResource("3_1q6tm")]
+position = Vector2(136, 832)
+
+[node name="PlayerCamera" parent="Player" index="0" unique_id=744180924]
+limit_top = 0
+limit_right = 2250
+
+[node name="Borders" parent="." unique_id=999858988 instance=ExtResource("4_1q6tm")]
+
+[node name="RBoarder" parent="Borders" index="0" unique_id=932751578 node_paths=PackedStringArray("camera")]
+camera = NodePath("../../Player/PlayerCamera")
+
+[node name="BoxInterface" parent="." unique_id=2091224111 instance=ExtResource("6_cggpd")]
+
+[node name="Item" parent="BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox" parent_id_path=PackedInt32Array(2091224111, 527385168) index="0" unique_id=540643436 node_paths=PackedStringArray("object") instance=ExtResource("7_t7v2y")]
+material = ExtResource("7_055b2")
+layout_mode = 2
+icon = ExtResource("9_ait6c")
+item = SubResource("Resource_bl0du")
+id = 1
+object = NodePath("../../../../../../1")
+
+[node name="1" type="StaticBody2D" parent="." unique_id=134811945 node_paths=PackedStringArray("box", "collision_2d")]
+position = Vector2(640, 768)
+script = ExtResource("7_2mgoq")
+box = NodePath("../BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox")
+collision_2d = [NodePath("Collision0"), NodePath("Collision1")]
+
+[node name="Collision0" type="CollisionShape2D" parent="1" unique_id=1068746114]
+shape = SubResource("RectangleShape2D_cggpd")
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="1" unique_id=1639923971]
+position = Vector2(-1.1444092e-05, 2.670288e-05)
+scale = Vector2(5.000001, 1.9999999)
+energy = 2.0
+blend_mode = 2
+texture = SubResource("GradientTexture2D_055b2")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="1" unique_id=508072100]
+material = ExtResource("7_055b2")
+position = Vector2(5.722046e-06, 7.6293945e-06)
+scale = Vector2(0.6666667, 0.24999994)
+texture = SubResource("CompressedTexture2D_2mgoq")
+region_enabled = true
+region_rect = Rect2(0, 128, 384, 256)
+metadata/_edit_lock_ = true
+
+[node name="Collision1" type="CollisionShape2D" parent="1" unique_id=1477422484]
+position = Vector2(224.00006, -128)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_2mgoq")
+
+[node name="PointLight2D2" type="PointLight2D" parent="1" unique_id=1127108]
+position = Vector2(224, -128)
+rotation = 1.5707964
+scale = Vector2(5.000001, 1.9999999)
+energy = 2.0
+blend_mode = 2
+texture = SubResource("GradientTexture2D_uhnj4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="1" unique_id=64321689]
+material = ExtResource("7_055b2")
+position = Vector2(224, -128)
+rotation = 1.5707964
+scale = Vector2(0.6666667, 0.24999994)
+texture = SubResource("CompressedTexture2D_42uki")
+region_enabled = true
+region_rect = Rect2(0, 128, 384, 256)
+
+[editable path="Player"]
+[editable path="Borders"]
+[editable path="BoxInterface"]

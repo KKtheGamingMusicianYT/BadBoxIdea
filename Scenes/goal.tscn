@@ -8,6 +8,7 @@ radius = 32.0
 [sub_resource type="Gradient" id="Gradient_s0pnd"]
 offsets = PackedFloat32Array(0.4231041, 1)
 colors = PackedColorArray(0.33333334, 1, 0, 1, 0.33333325, 1, 0, 0)
+metadata/_snap_enabled = true
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2lgk0"]
 gradient = SubResource("Gradient_s0pnd")

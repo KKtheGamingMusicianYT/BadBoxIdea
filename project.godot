@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Bad Idea"
-run/main_scene="uid://ck48bmp531u0h"
+run/main_scene="uid://ig4368f766is"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 

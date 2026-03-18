@@ -6,6 +6,19 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jv3fj"]
 size = Vector2(256, 256)
 
+[sub_resource type="Gradient" id="Gradient_oovug"]
+offsets = PackedFloat32Array(0, 0.3, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jv3fj"]
+gradient = SubResource("Gradient_oovug")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
 [node name="StaticBody2D" type="StaticBody2D" unique_id=1650057276 node_paths=PackedStringArray("sprite")]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_jv3fj")
@@ -19,3 +32,8 @@ shape = SubResource("RectangleShape2D_jv3fj")
 texture = ExtResource("1_oqyp1")
 region_enabled = true
 region_rect = Rect2(128, 128, 256, 256)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=470047732]
+position = Vector2(-1.5258789e-05, 9.536743e-06)
+scale = Vector2(5.9999995, 5.9999995)
+texture = SubResource("GradientTexture2D_jv3fj")
