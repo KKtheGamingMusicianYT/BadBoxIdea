@@ -44,21 +44,14 @@ func _ready() -> void:
 	setup_states()
 	coyot_box_pos = COYOTE_BOX.position
 	floor_wall_censor_pos = FLOOR_WALL_CENSOR.position
-
 # The conditions for Players to use states
 func _physics_process(_delta: float) -> void:
 	current_state = state_machine.current_state
 	_update_physics_box()
 	_handle_player_input()
 	move_and_slide()
-	
-	for collision_number in get_slide_collision_count():
-		var collision = get_slide_collision(collision_number)
-		if collision.get_collider() is RigidBody2D:
-			var collider : RigidBody2D = collision.get_collider()
-			collider.apply_central_force(
-				Vector2(collision.get_normal().x * -1 * mass * properties.VELOCITY.x, 0)
-			)
+	_rigid_process()
+
 func _handle_player_input() -> void:
 	direction = Input.get_axis("Move_Left", "Move_Right")
 	if Input.is_action_just_pressed("Jump"): # Start the BufferJumpTimer when you try to jump
@@ -90,7 +83,7 @@ func _match_states() -> void:
 				if CAN_USE_GOD_MODE == true:
 					change_state(GOD_MODE)
 		WALK:
-			#_adjust_max_velocity()
+			_adjust_max_velocity()
 			if not direction:
 				change_state(IDLE)
 			if Input.is_action_pressed("Run"):
@@ -104,7 +97,7 @@ func _match_states() -> void:
 				direction = 0
 			_animate("Walk")
 		RUN:
-			#_adjust_max_velocity()
+			_adjust_max_velocity()
 			if not direction:
 				change_state(IDLE)
 			if not Input.is_action_pressed("Run"):
@@ -207,4 +200,21 @@ func _animate(animation: String) -> void:
 	CHARACTER_ANIMATED_SPRITE.play(animation)
 	if direction:
 		CHARACTER_ANIMATED_SPRITE.flip_h = direction*-1+1
-	
+
+func _rigid_process() -> void:
+	match possible_states.find_key(current_state):
+		IDLE:
+			_push_rigid_bodies()
+		WALK:
+			_push_rigid_bodies()
+		RUN:
+			_push_rigid_bodies()
+
+func _push_rigid_bodies() -> void:
+	for collision_number in get_slide_collision_count():
+		var collision = get_slide_collision(collision_number)
+		if collision.get_collider() is RigidBody2D:
+			var collider : RigidBody2D = collision.get_collider()
+			collider.apply_central_force(
+				Vector2(collision.get_normal().x * -1 * mass * properties.VELOCITY.x, 0)
+			)

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://clg8samn7gqkr" path="res://Assets/Sprites/Block/Size0000.png" id="5_0qy5o"]
 [ext_resource type="PackedScene" uid="uid://bx7japdg7ed76" path="res://Scenes/item.tscn" id="5_2cgwh"]
 [ext_resource type="Material" uid="uid://bkxbwyecreq0c" path="res://Resources/ObjectColors/violet.tres" id="5_mie3u"]
+[ext_resource type="PackedScene" uid="uid://d2hp865b8yt3u" path="res://Scenes/death_box.tscn" id="7_0qy5o"]
 [ext_resource type="Material" uid="uid://bkj7mm6lfu5ys" path="res://Resources/ObjectColors/dark_teal.tres" id="8_0qy5o"]
 [ext_resource type="Script" uid="uid://l47uf8luj8s6" path="res://Scripts/node_with_id.gd" id="8_2cgwh"]
 [ext_resource type="PackedScene" uid="uid://dhyync7cvqavl" path="res://Scenes/goal.tscn" id="9_2cgwh"]
@@ -45,11 +46,12 @@ position = Vector2(0, 960)
 tile_map_data = PackedByteArray("AAAAAAEAAQAAAAAAAQABAAAAAQAAAAAAAQABAAEAAQAAAAAAAQACAAAAAQAAAAAAAQACAAEAAQAAAAAAAQADAAAAAQAAAAAAAQADAAEAAQAAAAAAAQAEAAAAAQAAAAAAAQAEAAEAAQAAAAAAAQAFAAAAAQAAAAAAAQAFAAEAAQAAAAAAAQAGAAAAAQAAAAAAAQAGAAEAAQAAAAAAAQAHAAAAAQAAAAAAAQAHAAEAAQAAAAAAAQAIAAAAAQAAAAAAAQAIAAEAAQAAAAAAAQAJAAAAAQAAAAAAAQAJAAEAAQAAAAAAAQAKAAAAAQAAAAAAAQAKAAEAAQAAAAAAAQALAAAAAQAAAAAAAQALAAEAAQAAAAAAAQAMAAAAAQAAAAAAAQAMAAEAAQAAAAAAAQANAAAAAQAAAAAAAQANAAEAAQAAAAAAAQAOAAAAAQAAAAAAAQAOAAEAAQAAAAAAAQAPAAAAAQAAAAAAAQAPAAEAAQAAAAAAAQAQAAAAAQAAAAAAAQAQAAEAAQAAAAAAAQAAAAIAAQAAAAAAAQAAAAMAAQAAAAAAAQABAAIAAQAAAAAAAQABAAMAAQAAAAAAAQACAAIAAQAAAAAAAQACAAMAAQAAAAAAAQADAAIAAQAAAAAAAQADAAMAAQAAAAAAAQAEAAIAAQAAAAAAAQAEAAMAAQAAAAAAAQAFAAIAAQAAAAAAAQAFAAMAAQAAAAAAAQAGAAIAAQAAAAAAAQAGAAMAAQAAAAAAAQAHAAIAAQAAAAAAAQAHAAMAAQAAAAAAAQAIAAIAAQAAAAAAAQAIAAMAAQAAAAAAAQAJAAIAAQAAAAAAAQAJAAMAAQAAAAAAAQAKAAIAAQAAAAAAAQAKAAMAAQAAAAAAAQALAAIAAQAAAAAAAQALAAMAAQAAAAAAAQAMAAIAAQAAAAAAAQAMAAMAAQAAAAAAAQANAAIAAQAAAAAAAQANAAMAAQAAAAAAAQAOAAIAAQAAAAAAAQAOAAMAAQAAAAAAAQAPAAIAAQAAAAAAAQAPAAMAAQAAAAAAAQAQAAIAAQAAAAAAAQAQAAMAAQAAAAAAAQANAP7/AQAAAAAAAQAAAAAAAQAAAAAAAQA=")
 tile_set = ExtResource("2_aees8")
 
-[node name="1" type="StaticBody2D" parent="." unique_id=1950348525 node_paths=PackedStringArray("box", "collision_2d")]
+[node name="DeathBox" parent="." unique_id=1943901647 instance=ExtResource("7_0qy5o")]
+
+[node name="1" type="StaticBody2D" parent="." unique_id=1950348525 node_paths=PackedStringArray("box")]
 position = Vector2(736, 768)
 script = ExtResource("8_2cgwh")
 box = NodePath("../BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox")
-collision_2d = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="1" unique_id=415246921]
 position = Vector2(0, 96)
@@ -64,12 +66,11 @@ texture = ExtResource("12_aees8")
 region_enabled = true
 region_rect = Rect2(0, 128, 384, 256)
 
-[node name="2" type="StaticBody2D" parent="." unique_id=389567986 node_paths=PackedStringArray("box", "collision_2d")]
+[node name="2" type="StaticBody2D" parent="." unique_id=389567986 node_paths=PackedStringArray("box")]
 position = Vector2(1280, 864)
 script = ExtResource("8_2cgwh")
 id = 2
 box = NodePath("../BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox")
-collision_2d = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="2" unique_id=212842852]
 shape = SubResource("RectangleShape2D_yb21e")

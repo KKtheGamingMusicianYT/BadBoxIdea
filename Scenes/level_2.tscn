@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://coefif7s7p7tm" path="res://Scenes/box_interface.tscn" id="6_cggpd"]
 [ext_resource type="Script" uid="uid://l47uf8luj8s6" path="res://Scripts/node_with_id.gd" id="7_2mgoq"]
 [ext_resource type="PackedScene" uid="uid://bx7japdg7ed76" path="res://Scenes/item.tscn" id="7_t7v2y"]
+[ext_resource type="PackedScene" uid="uid://d2hp865b8yt3u" path="res://Scenes/death_box.tscn" id="8_q0ycs"]
 [ext_resource type="Texture2D" uid="uid://clg8samn7gqkr" path="res://Assets/Sprites/Block/Size0000.png" id="9_ait6c"]
 [ext_resource type="Script" uid="uid://dd25n2sul3wg4" path="res://Scripts/ResourceScripts/item_data.gd" id="10_vcilj"]
 [ext_resource type="Material" uid="uid://u5fnjte4ac5w" path="res://Resources/ObjectColors/orange.tres" id="11_ait6c"]
@@ -30,14 +31,14 @@ metadata/_custom_type_script = "uid://dd25n2sul3wg4"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cggpd"]
 size = Vector2(256, 64)
 
-[sub_resource type="Gradient" id="Gradient_6r07y"]
+[sub_resource type="Gradient" id="Gradient_q0ycs"]
 offsets = PackedFloat32Array(0, 0.5, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 metadata/_snap_enabled = true
 metadata/_snap_count = 20
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_hj5x7"]
-gradient = SubResource("Gradient_6r07y")
+gradient = SubResource("Gradient_q0ycs")
 fill = 2
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0.1)
@@ -46,8 +47,14 @@ metadata/_snap_enabled = true
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2mgoq"]
 load_path = "res://.godot/imported/Size0001.png-0205a8f3342cc7f15b1bbfa243eb6a13.ctex"
 
+[sub_resource type="Gradient" id="Gradient_bl0du"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_yvrk7"]
-gradient = SubResource("Gradient_6r07y")
+gradient = SubResource("Gradient_bl0du")
 fill = 2
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0.1)
@@ -55,6 +62,12 @@ metadata/_snap_enabled = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vcilj"]
 size = Vector2(256, 64)
+
+[sub_resource type="Gradient" id="Gradient_6r07y"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ait6c"]
 gradient = SubResource("Gradient_6r07y")
@@ -134,9 +147,10 @@ position = Vector2(-64, -32)
 tile_map_data = PackedByteArray("AAD//wcAAQAAAAAAAQAAAAcAAQAAAAAAAQABAAcAAQAAAAAAAQACAAcAAQAAAAAAAQADAAcAAQAAAAAAAQAEAAcAAQAAAAAAAQAFAAcAAQAAAAAAAQAGAAcAAQAAAAAAAQAGAAgAAQAAAAAAAQAFAAgAAQAAAAAAAQAEAAgAAQAAAAAAAQADAAgAAQAAAAAAAQACAAgAAQAAAAAAAQABAAgAAQAAAAAAAQAAAAgAAQAAAAAAAQAHAAcAAQAAAAAAAQAHAAgAAQAAAAAAAQA=")
 tile_set = ExtResource("2_12fag")
 
-[node name="Goal" parent="." unique_id=1043991833 instance=ExtResource("4_vcilj")]
-position = Vector2(1312, 288)
-level = ExtResource("5_bl0du")
+[node name="Borders" parent="." unique_id=999858988 instance=ExtResource("4_1q6tm")]
+
+[node name="RBoarder" parent="Borders" index="0" unique_id=932751578 node_paths=PackedStringArray("camera")]
+camera = NodePath("../../Player/PlayerCamera")
 
 [node name="Player" parent="." unique_id=404843843 instance=ExtResource("3_1q6tm")]
 position = Vector2(136, 832)
@@ -145,10 +159,11 @@ position = Vector2(136, 832)
 limit_top = 0
 limit_right = 2250
 
-[node name="Borders" parent="." unique_id=999858988 instance=ExtResource("4_1q6tm")]
+[node name="Goal" parent="." unique_id=1043991833 instance=ExtResource("4_vcilj")]
+position = Vector2(1312, 288)
+level = ExtResource("5_bl0du")
 
-[node name="RBoarder" parent="Borders" index="0" unique_id=932751578 node_paths=PackedStringArray("camera")]
-camera = NodePath("../../Player/PlayerCamera")
+[node name="DeathBox" parent="." unique_id=1943901647 instance=ExtResource("8_q0ycs")]
 
 [node name="BoxInterface" parent="." unique_id=2091224111 instance=ExtResource("6_cggpd")]
 
@@ -368,6 +383,6 @@ texture = SubResource("CompressedTexture2D_4k5rq")
 region_enabled = true
 region_rect = Rect2(0, 128, 384, 256)
 
-[editable path="Player"]
 [editable path="Borders"]
+[editable path="Player"]
 [editable path="BoxInterface"]

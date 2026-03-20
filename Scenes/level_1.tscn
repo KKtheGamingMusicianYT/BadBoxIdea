@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bx7japdg7ed76" path="res://Scenes/item.tscn" id="6_wrinw"]
 [ext_resource type="Material" uid="uid://bkxbwyecreq0c" path="res://Resources/ObjectColors/violet.tres" id="7_chwpn"]
 [ext_resource type="Texture2D" uid="uid://clg8samn7gqkr" path="res://Assets/Sprites/Block/Size0000.png" id="8_af3po"]
+[ext_resource type="PackedScene" uid="uid://d2hp865b8yt3u" path="res://Scenes/death_box.tscn" id="8_oovug"]
 [ext_resource type="PackedScene" uid="uid://dhyync7cvqavl" path="res://Scenes/goal.tscn" id="9_6r07y"]
 [ext_resource type="Script" uid="uid://dd25n2sul3wg4" path="res://Scripts/ResourceScripts/item_data.gd" id="9_uy8f0"]
 [ext_resource type="PackedScene" uid="uid://lantacwmwc42" path="res://Scenes/level_2.tscn" id="10_6ioyp"]
@@ -75,6 +76,11 @@ position = Vector2(-64, -32)
 tile_map_data = PackedByteArray("AAAAAAcAAQAAAAAAAQABAAcAAQAAAAAAAQACAAcAAQAAAAAAAQADAAcAAQAAAAAAAQAEAAcAAQAAAAAAAQAFAAcAAQAAAAAAAQAKAAcAAQAAAAAAAQALAAcAAQAAAAAAAQAMAAcAAQAAAAAAAQANAAcAAQAAAAAAAQAOAAcAAQAAAAAAAQAOAAgAAQAAAAAAAQANAAgAAQAAAAAAAQAMAAgAAQAAAAAAAQALAAgAAQAAAAAAAQAKAAgAAQAAAAAAAQAJAAgAAQAAAAAAAQAIAAgAAQAAAAAAAQAHAAgAAQAAAAAAAQAGAAgAAQAAAAAAAQAFAAgAAQAAAAAAAQAEAAgAAQAAAAAAAQADAAgAAQAAAAAAAQACAAgAAQAAAAAAAQABAAgAAQAAAAAAAQAAAAgAAQAAAAAAAQAPAAcAAQAAAAAAAQAPAAgAAQAAAAAAAQAQAAgAAQAAAAAAAQD//wcAAQAAAAAAAQAQAAcAAQAAAAAAAQARAAgAAQAAAAAAAQA=")
 tile_set = ExtResource("3_7p6j4")
 
+[node name="Borders" parent="." unique_id=999858988 instance=ExtResource("4_6444e")]
+
+[node name="RBoarder" parent="Borders" index="0" unique_id=932751578 node_paths=PackedStringArray("camera")]
+camera = NodePath("../../Player/PlayerCamera")
+
 [node name="Player" parent="." unique_id=404843843 instance=ExtResource("1_vk57k")]
 position = Vector2(192, 832)
 
@@ -82,14 +88,11 @@ position = Vector2(192, 832)
 limit_top = 0
 limit_right = 2048
 
-[node name="Borders" parent="." unique_id=999858988 instance=ExtResource("4_6444e")]
-
-[node name="RBoarder" parent="Borders" index="0" unique_id=932751578 node_paths=PackedStringArray("camera")]
-camera = NodePath("../../Player/PlayerCamera")
-
 [node name="Goal" parent="." unique_id=1043991833 instance=ExtResource("9_6r07y")]
 position = Vector2(1344, 480)
 level = ExtResource("10_6ioyp")
+
+[node name="DeathBox" parent="." unique_id=1943901647 instance=ExtResource("8_oovug")]
 
 [node name="BoxInterface" parent="." unique_id=2091224111 instance=ExtResource("3_xfk5q")]
 
@@ -219,6 +222,6 @@ energy = 2.0
 blend_mode = 2
 texture = SubResource("GradientTexture2D_8yhm2")
 
-[editable path="Player"]
 [editable path="Borders"]
+[editable path="Player"]
 [editable path="BoxInterface"]
