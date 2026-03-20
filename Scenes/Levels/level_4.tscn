@@ -1,0 +1,42 @@
+[gd_scene format=4 uid="uid://b1l3gwk1jc3bp"]
+
+[ext_resource type="PackedScene" uid="uid://b1ytlcx85siou" path="res://Scenes/sky_box.tscn" id="1_i1va2"]
+[ext_resource type="Material" uid="uid://d3wvto5rxtohj" path="res://Resources/ObjectColors/black.tres" id="2_h0uxt"]
+[ext_resource type="TileSet" uid="uid://dpqhevuc17ijh" path="res://Resources/block_tileset.tres" id="2_xq0e5"]
+[ext_resource type="PackedScene" uid="uid://b55edq5uh3pp3" path="res://Scenes/borders.tscn" id="3_6grq2"]
+[ext_resource type="PackedScene" uid="uid://b38x0l1gd3w7w" path="res://Scenes/Player.tscn" id="4_vwhew"]
+[ext_resource type="PackedScene" uid="uid://dhyync7cvqavl" path="res://Scenes/goal.tscn" id="5_t74h0"]
+[ext_resource type="PackedScene" uid="uid://d2hp865b8yt3u" path="res://Scenes/death_box.tscn" id="6_i4hbv"]
+[ext_resource type="PackedScene" uid="uid://coefif7s7p7tm" path="res://Scenes/box_interface.tscn" id="7_i4hbv"]
+
+[node name="Level4" type="Node2D" unique_id=1795732649]
+
+[node name="SkyBox" parent="." unique_id=1652161055 instance=ExtResource("1_i1va2")]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1050166943]
+material = ExtResource("2_h0uxt")
+position = Vector2(0, -32)
+tile_map_data = PackedByteArray("AAD//wcAAQAAAAAAAQD//wgAAQAAAAAAAQAAAAgAAQAAAAAAAQABAAgAAQAAAAAAAQABAAcAAQAAAAAAAQAAAAcAAQAAAAAAAQACAAcAAQAAAAAAAQADAAcAAQAAAAAAAQADAAgAAQAAAAAAAQACAAgAAQAAAAAAAQA=")
+tile_set = ExtResource("2_xq0e5")
+
+[node name="Borders" parent="." unique_id=999858988 instance=ExtResource("3_6grq2")]
+
+[node name="RBoarder" parent="Borders" index="0" unique_id=932751578 node_paths=PackedStringArray("camera")]
+camera = NodePath("../../Player/PlayerCamera")
+
+[node name="Player" parent="." unique_id=404843843 instance=ExtResource("4_vwhew")]
+position = Vector2(128, 832)
+
+[node name="FlashLight" parent="Player" index="2" unique_id=858341556]
+enabled = true
+
+[node name="Goal" parent="." unique_id=412398523 instance=ExtResource("5_t74h0")]
+position = Vector2(800, 352)
+
+[node name="DeathBox" parent="." unique_id=1943901647 instance=ExtResource("6_i4hbv")]
+
+[node name="BoxInterface" parent="." unique_id=2091224111 instance=ExtResource("7_i4hbv")]
+
+[editable path="Borders"]
+[editable path="Player"]
+[editable path="BoxInterface"]

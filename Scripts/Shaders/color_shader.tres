@@ -9,6 +9,7 @@ operator = 2
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_w3eum"]
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_iqe6t"]
+expanded_output_ports = [0]
 parameter_name = "Color"
 default_value_enabled = true
 default_value = Color(1, 0, 0, 1)

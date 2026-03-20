@@ -30,6 +30,7 @@ var collision_shape : CollisionShape2D
 
 var coyot_box_pos : Vector2
 var floor_wall_censor_pos : Vector2
+var wall_censor_pos : Vector2
 
 enum { # Available states for the Player for readability. Index used by the possibla_states dict to reference paths
 	IDLE, # 0
@@ -44,6 +45,7 @@ func _ready() -> void:
 	setup_states()
 	coyot_box_pos = COYOTE_BOX.position
 	floor_wall_censor_pos = FLOOR_WALL_CENSOR.position
+	wall_censor_pos = WALL_CENSOR.position
 # The conditions for Players to use states
 func _physics_process(_delta: float) -> void:
 	current_state = state_machine.current_state
@@ -66,6 +68,7 @@ func _handle_player_input() -> void:
 func _update_box_dir() -> void:
 	COYOTE_BOX.position.x = coyot_box_pos.x * direction
 	FLOOR_WALL_CENSOR.position.x = floor_wall_censor_pos.x * direction
+	WALL_CENSOR.position.x = wall_censor_pos.x + (24 * int(bool(direction - 1)) * int(bool(direction)))
 
 func _match_states() -> void:
 	match possible_states.find_key(current_state):
@@ -93,8 +96,8 @@ func _match_states() -> void:
 			#_check_gap_running()
 			if is_on_floor():
 				COYOTE_BOX.disabled = true
-			if WALL_CENSOR.is_colliding() and not GAP_CENSOR.is_colliding():
-				direction = 0
+			#if WALL_CENSOR.is_colliding() and not GAP_CENSOR.is_colliding():
+			#	direction = 0
 			_animate("Walk")
 		RUN:
 			_adjust_max_velocity()
@@ -118,9 +121,9 @@ func _match_states() -> void:
 			if jumping < 1:
 				change_state(FALL)
 			# Clip past corners of the ceiling when you will barely hit it
-			if not CEILING_SENSOR.is_colliding():
-				_clip_edges(CLIP_RIGHT, -1)
-				_clip_edges(CLIP_LEFT, 1)
+			#if not CEILING_SENSOR.is_colliding():
+			#	_clip_edges(CLIP_RIGHT, -1)
+			#	_clip_edges(CLIP_LEFT, 1)
 			if is_on_ceiling() and CEILING_SENSOR.is_colliding():
 				jumping = 0 # Decelerate your jump
 				change_state(FALL) # Start falling

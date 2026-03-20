@@ -44,6 +44,19 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 metadata/_snap_enabled = true
 
+[sub_resource type="Gradient" id="Gradient_lyrkg"]
+offsets = PackedFloat32Array(0, 0.65, 0.95, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c43xd"]
+gradient = SubResource("Gradient_lyrkg")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_bhhdu"]
 animations = [{
 "frames": [{
@@ -114,9 +127,6 @@ animations = [{
 "speed": 30.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_megsn"]
-size = Vector2(32, 56)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ksbbd"]
 size = Vector2(48, 8)
 
@@ -127,6 +137,9 @@ size = Vector2(64, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_glx4g"]
 size = Vector2(33, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_megsn"]
+size = Vector2(32, 56)
 
 [node name="Player" type="CharacterBody2D" unique_id=404843843 node_paths=PackedStringArray("BUFFER_JUMP_TIMER", "SMALL_PHYSICS_BOX", "COYOTE_BOX", "GAP_BOX", "GAP_CENSOR", "WALL_CENSOR", "FLOOR_WALL_CENSOR", "CLIP_LEFT", "CLIP_RIGHT", "CEILING_SENSOR", "CHARACTER_ANIMATED_SPRITE", "state_machine")]
 z_index = 100
@@ -168,6 +181,14 @@ shadow_filter = 1
 texture = SubResource("GradientTexture2D_lyrkg")
 metadata/_edit_lock_ = true
 
+[node name="FlashLight" type="PointLight2D" parent="." unique_id=858341556]
+position = Vector2(1.4305115e-06, -15.999996)
+scale = Vector2(2.2499998, 2.2499998)
+enabled = false
+energy = 16.0
+blend_mode = 2
+texture = SubResource("GradientTexture2D_c43xd")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=396514442]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_bhhdu")
@@ -179,11 +200,6 @@ metadata/_edit_lock_ = true
 wait_time = 0.2
 one_shot = true
 ignore_time_scale = true
-
-[node name="SmallPhysicsHitBox" type="CollisionShape2D" parent="." unique_id=175223632]
-position = Vector2(0, 4)
-shape = SubResource("RectangleShape2D_megsn")
-metadata/_edit_lock_ = true
 
 [node name="CoyoteBox" type="CollisionPolygon2D" parent="." unique_id=780247785]
 position = Vector2(-24, -8)
@@ -209,9 +225,8 @@ target_position = Vector2(0, 0)
 metadata/_edit_lock_ = true
 
 [node name="WallCensor" type="ShapeCast2D" parent="." unique_id=1770420341]
-position = Vector2(-24, 0)
 shape = SubResource("RectangleShape2D_kih0c")
-target_position = Vector2(48, 0)
+target_position = Vector2(-24, 0)
 metadata/_edit_lock_ = true
 
 [node name="ClipCeilingSensors" type="Node2D" parent="." unique_id=910299419]
@@ -233,6 +248,11 @@ metadata/_edit_lock_ = true
 position = Vector2(0, -24)
 shape = SubResource("RectangleShape2D_glx4g")
 target_position = Vector2(0, -16)
+metadata/_edit_lock_ = true
+
+[node name="SmallPhysicsHitBox" type="CollisionShape2D" parent="." unique_id=175223632]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_megsn")
 metadata/_edit_lock_ = true
 
 [node name="StateMachine" type="Node" parent="." unique_id=1805402115 node_paths=PackedStringArray("parent")]

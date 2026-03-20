@@ -4,4 +4,4 @@
 
 [resource]
 shader = ExtResource("1_w0j5s")
-shader_parameter/Color = Color(0, 0, 1, 1)
+shader_parameter/Color = Color(0.19999999, 0.19999999, 1, 1)

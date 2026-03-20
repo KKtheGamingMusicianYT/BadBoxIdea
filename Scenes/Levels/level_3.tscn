@@ -1,23 +1,48 @@
 [gd_scene format=4 uid="uid://6oispmhnqw68"]
 
-[ext_resource type="PackedScene" uid="uid://b55edq5uh3pp3" path="res://Scenes/borders.tscn" id="1_c81s1"]
-[ext_resource type="PackedScene" uid="uid://b1ytlcx85siou" path="res://Scenes/sky_box.tscn" id="1_n4vm5"]
-[ext_resource type="Material" uid="uid://hs6fydc27bmt" path="res://Resources/ObjectColors/kk_pink.tres" id="2_fxnjf"]
-[ext_resource type="PackedScene" uid="uid://b38x0l1gd3w7w" path="res://Scenes/Player.tscn" id="2_n4vm5"]
-[ext_resource type="TileSet" uid="uid://dpqhevuc17ijh" path="res://Resources/block_tileset.tres" id="3_fxnjf"]
-[ext_resource type="Script" uid="uid://l47uf8luj8s6" path="res://Scripts/node_with_id.gd" id="4_xjeco"]
-[ext_resource type="Material" uid="uid://dy384xgghatsr" path="res://Resources/ObjectColors/royal_blue.tres" id="5_j77fg"]
-[ext_resource type="Texture2D" uid="uid://bn6l2vtf6ruv0" path="res://Assets/Sprites/Block/Size0001.png" id="6_ki8bc"]
-[ext_resource type="Material" uid="uid://3otlrtqob3g" path="res://Resources/ObjectColors/hot_pink.tres" id="7_nbwsh"]
-[ext_resource type="Texture2D" uid="uid://bx1hsboq4euo8" path="res://Assets/Sprites/Block/Size0002.png" id="8_kgmqw"]
-[ext_resource type="PackedScene" uid="uid://coefif7s7p7tm" path="res://Scenes/box_interface.tscn" id="9_s80er"]
-[ext_resource type="PackedScene" uid="uid://bx7japdg7ed76" path="res://Scenes/item.tscn" id="10_8jhox"]
-[ext_resource type="Texture2D" uid="uid://clg8samn7gqkr" path="res://Assets/Sprites/Block/Size0000.png" id="11_hed5s"]
-[ext_resource type="Material" uid="uid://qsg6cy1mns26" path="res://Resources/ObjectColors/purple.tres" id="11_j77fg"]
-[ext_resource type="PackedScene" uid="uid://d2hp865b8yt3u" path="res://Scenes/death_box.tscn" id="11_xjeco"]
-[ext_resource type="Material" uid="uid://bsabo38eq4uk6" path="res://Resources/ObjectColors/jeans_blue.tres" id="12_ki8bc"]
-[ext_resource type="Script" uid="uid://dd25n2sul3wg4" path="res://Scripts/ResourceScripts/item_data.gd" id="12_yykrm"]
-[ext_resource type="PackedScene" uid="uid://dhyync7cvqavl" path="res://Scenes/goal.tscn" id="13_nbwsh"]
+[ext_resource type="PackedScene" uid="uid://b1ytlcx85siou" path="res://Scenes/sky_box.tscn" id="1_r8neg"]
+[ext_resource type="Material" uid="uid://hs6fydc27bmt" path="res://Resources/ObjectColors/kk_pink.tres" id="2_rcyh2"]
+[ext_resource type="TileSet" uid="uid://dpqhevuc17ijh" path="res://Resources/block_tileset.tres" id="3_341pv"]
+[ext_resource type="PackedScene" uid="uid://b55edq5uh3pp3" path="res://Scenes/borders.tscn" id="4_wnlxl"]
+[ext_resource type="PackedScene" uid="uid://b38x0l1gd3w7w" path="res://Scenes/Player.tscn" id="5_jgaqf"]
+[ext_resource type="PackedScene" uid="uid://dhyync7cvqavl" path="res://Scenes/goal.tscn" id="6_x66yp"]
+[ext_resource type="PackedScene" uid="uid://b1l3gwk1jc3bp" path="res://Scenes/Levels/level_4.tscn" id="7_8ve8p"]
+[ext_resource type="PackedScene" uid="uid://d2hp865b8yt3u" path="res://Scenes/death_box.tscn" id="8_3m4x7"]
+[ext_resource type="PackedScene" uid="uid://coefif7s7p7tm" path="res://Scenes/box_interface.tscn" id="9_q2kiq"]
+[ext_resource type="PackedScene" uid="uid://bx7japdg7ed76" path="res://Scenes/item.tscn" id="10_wvd0d"]
+[ext_resource type="Material" uid="uid://3otlrtqob3g" path="res://Resources/ObjectColors/hot_pink.tres" id="11_gupo0"]
+[ext_resource type="Texture2D" uid="uid://clg8samn7gqkr" path="res://Assets/Sprites/Block/Size0000.png" id="12_3l8qv"]
+[ext_resource type="Script" uid="uid://dd25n2sul3wg4" path="res://Scripts/ResourceScripts/item_data.gd" id="13_teul3"]
+[ext_resource type="Material" uid="uid://qsg6cy1mns26" path="res://Resources/ObjectColors/purple.tres" id="14_6qnit"]
+[ext_resource type="Material" uid="uid://dy384xgghatsr" path="res://Resources/ObjectColors/royal_blue.tres" id="15_e4pux"]
+[ext_resource type="Material" uid="uid://bsabo38eq4uk6" path="res://Resources/ObjectColors/jeans_blue.tres" id="16_isixn"]
+[ext_resource type="Script" uid="uid://l47uf8luj8s6" path="res://Scripts/node_with_id.gd" id="17_d0d85"]
+[ext_resource type="Texture2D" uid="uid://bn6l2vtf6ruv0" path="res://Assets/Sprites/Block/Size0001.png" id="18_ykav4"]
+[ext_resource type="Texture2D" uid="uid://bx1hsboq4euo8" path="res://Assets/Sprites/Block/Size0002.png" id="19_s0hn8"]
+
+[sub_resource type="Resource" id="Resource_fxnjf"]
+script = ExtResource("13_teul3")
+volume = 1
+icon = ExtResource("12_3l8qv")
+metadata/_custom_type_script = "uid://dd25n2sul3wg4"
+
+[sub_resource type="Resource" id="Resource_ki8bc"]
+script = ExtResource("13_teul3")
+volume = 1
+icon = ExtResource("12_3l8qv")
+metadata/_custom_type_script = "uid://dd25n2sul3wg4"
+
+[sub_resource type="Resource" id="Resource_6ioyp"]
+script = ExtResource("13_teul3")
+volume = 1
+icon = ExtResource("12_3l8qv")
+metadata/_custom_type_script = "uid://dd25n2sul3wg4"
+
+[sub_resource type="Resource" id="Resource_6r07y"]
+script = ExtResource("13_teul3")
+volume = 1
+icon = ExtResource("12_3l8qv")
+metadata/_custom_type_script = "uid://dd25n2sul3wg4"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af3po"]
 size = Vector2(320, 128)
@@ -64,57 +89,75 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 metadata/_snap_enabled = true
 
-[sub_resource type="Resource" id="Resource_fxnjf"]
-script = ExtResource("12_yykrm")
-volume = 1
-icon = ExtResource("11_hed5s")
-metadata/_custom_type_script = "uid://dd25n2sul3wg4"
-
-[sub_resource type="Resource" id="Resource_ki8bc"]
-script = ExtResource("12_yykrm")
-volume = 1
-icon = ExtResource("11_hed5s")
-metadata/_custom_type_script = "uid://dd25n2sul3wg4"
-
-[sub_resource type="Resource" id="Resource_6r07y"]
-script = ExtResource("12_yykrm")
-volume = 1
-icon = ExtResource("11_hed5s")
-metadata/_custom_type_script = "uid://dd25n2sul3wg4"
-
-[sub_resource type="Resource" id="Resource_6ioyp"]
-script = ExtResource("12_yykrm")
-volume = 1
-icon = ExtResource("11_hed5s")
-metadata/_custom_type_script = "uid://dd25n2sul3wg4"
-
 [node name="Level3" type="Node2D" unique_id=685188657]
 
-[node name="SkyBox" parent="." unique_id=1652161055 instance=ExtResource("1_n4vm5")]
+[node name="SkyBox" parent="." unique_id=1652161055 instance=ExtResource("1_r8neg")]
 metadata/_edit_lock_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1963785752]
-material = ExtResource("2_fxnjf")
+material = ExtResource("2_rcyh2")
 position = Vector2(-64, -160)
 tile_map_data = PackedByteArray("AAAAAAgAAQAAAAAAAQABAAgAAQAAAAAAAQACAAgAAQAAAAAAAQACAAkAAQAAAAAAAQADAAkAAQAAAAAAAQAEAAkAAQAAAAAAAQAFAAkAAQAAAAAAAQAGAAgAAQAAAAAAAQAFAAgAAQAAAAAAAQAEAAgAAQAAAAAAAQADAAgAAQAAAAAAAQABAAkAAQAAAAAAAQAAAAkAAQAAAAAAAQD//wkAAQAAAAAAAQA=")
-tile_set = ExtResource("3_fxnjf")
+tile_set = ExtResource("3_341pv")
 
-[node name="Player" parent="." unique_id=404843843 instance=ExtResource("2_n4vm5")]
+[node name="Borders" parent="." unique_id=999858988 instance=ExtResource("4_wnlxl")]
+position = Vector2(0, -96)
+
+[node name="RBoarder" parent="Borders" index="0" unique_id=932751578 node_paths=PackedStringArray("camera")]
+camera = NodePath("../../Player/PlayerCamera")
+
+[node name="Player" parent="." unique_id=404843843 instance=ExtResource("5_jgaqf")]
 position = Vector2(176, 832)
 
 [node name="PlayerCamera" parent="Player" index="0" unique_id=744180924]
 limit_top = 0
 limit_right = 2100
 
-[node name="Borders" parent="." unique_id=999858988 instance=ExtResource("1_c81s1")]
-position = Vector2(0, -96)
+[node name="Goal" parent="." unique_id=412398523 instance=ExtResource("6_x66yp")]
+position = Vector2(1504, 352)
+level = ExtResource("7_8ve8p")
 
-[node name="RBoarder" parent="Borders" index="0" unique_id=932751578 node_paths=PackedStringArray("camera")]
-camera = NodePath("../../Player/PlayerCamera")
+[node name="DeathBox" parent="." unique_id=1943901647 instance=ExtResource("8_3m4x7")]
+
+[node name="BoxInterface" parent="." unique_id=2091224111 instance=ExtResource("9_q2kiq")]
+
+[node name="Item" parent="BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox" parent_id_path=PackedInt32Array(2091224111, 527385168) index="0" unique_id=540643436 node_paths=PackedStringArray("object") instance=ExtResource("10_wvd0d")]
+material = ExtResource("11_gupo0")
+layout_mode = 2
+icon = ExtResource("12_3l8qv")
+item = SubResource("Resource_fxnjf")
+id = 2
+object = NodePath("../../../../../../2")
+
+[node name="Item2" parent="BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox" parent_id_path=PackedInt32Array(2091224111, 527385168) index="1" unique_id=1828514067 node_paths=PackedStringArray("object") instance=ExtResource("10_wvd0d")]
+material = ExtResource("14_6qnit")
+layout_mode = 2
+icon = ExtResource("12_3l8qv")
+item = SubResource("Resource_ki8bc")
+id = 3
+object = NodePath("../../../../../../3")
+
+[node name="Item3" parent="BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox" parent_id_path=PackedInt32Array(2091224111, 527385168) index="2" unique_id=2070159129 node_paths=PackedStringArray("object") instance=ExtResource("10_wvd0d")]
+material = ExtResource("16_isixn")
+layout_mode = 2
+icon = ExtResource("12_3l8qv")
+item = SubResource("Resource_6ioyp")
+id = 4
+object = NodePath("../../../../../../4")
+
+[node name="Item4" parent="BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox" parent_id_path=PackedInt32Array(2091224111, 527385168) index="3" unique_id=1878750815 instance=ExtResource("10_wvd0d")]
+layout_mode = 2
+
+[node name="Item1" parent="BoxInterface/PanelContainer/VBoxContainer/OutsideBox" parent_id_path=PackedInt32Array(2091224111, 1854341907) index="0" unique_id=1726545559 node_paths=PackedStringArray("object")]
+material = ExtResource("15_e4pux")
+icon = ExtResource("12_3l8qv")
+item = SubResource("Resource_6r07y")
+id = 1
+object = NodePath("../../../../../1")
 
 [node name="1" type="StaticBody2D" parent="." unique_id=102639431 node_paths=PackedStringArray("box", "collision_2d")]
 position = Vector2(576, 736)
-script = ExtResource("4_xjeco")
+script = ExtResource("17_d0d85")
 box = NodePath("../BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox")
 collision_2d = [NodePath("CollisionShape2D")]
 
@@ -123,10 +166,10 @@ shape = SubResource("RectangleShape2D_af3po")
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="1" unique_id=1153995513]
-material = ExtResource("5_j77fg")
+material = ExtResource("15_e4pux")
 position = Vector2(-2.193451e-05, -32)
 scale = Vector2(0.8333334, 0.5)
-texture = ExtResource("6_ki8bc")
+texture = ExtResource("18_ykav4")
 metadata/_edit_lock_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="1" unique_id=947547987]
@@ -145,7 +188,7 @@ gravity_scale = 2.0
 center_of_mass_mode = 1
 center_of_mass = Vector2(32, 32)
 lock_rotation = true
-script = ExtResource("4_xjeco")
+script = ExtResource("17_d0d85")
 id = 2
 box = NodePath("../BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox")
 collision_2d = [NodePath("CollisionPolygon2D")]
@@ -155,10 +198,10 @@ polygon = PackedVector2Array(-32, -32, 32, -32, 32, 24, 16, 30, 0, 32, -16, 30, 
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="2" unique_id=1678216343]
-material = ExtResource("7_nbwsh")
+material = ExtResource("11_gupo0")
 position = Vector2(-16, -16)
 scale = Vector2(0.24999996, 0.25000006)
-texture = ExtResource("8_kgmqw")
+texture = ExtResource("19_s0hn8")
 metadata/_edit_lock_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="2" unique_id=1660411987]
@@ -177,7 +220,7 @@ gravity_scale = 2.0
 center_of_mass_mode = 1
 center_of_mass = Vector2(32, 32)
 lock_rotation = true
-script = ExtResource("4_xjeco")
+script = ExtResource("17_d0d85")
 id = 3
 box = NodePath("../BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox")
 collision_2d = [NodePath("CollisionPolygon2D")]
@@ -187,7 +230,7 @@ polygon = PackedVector2Array(-32, -32, 32, -32, 32, 24, 16, 30, 0, 32, -16, 30, 
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="3" unique_id=1662816348]
-material = ExtResource("11_j77fg")
+material = ExtResource("14_6qnit")
 position = Vector2(-16, -16)
 scale = Vector2(0.24999996, 0.25000006)
 texture = SubResource("CompressedTexture2D_ki8bc")
@@ -203,7 +246,7 @@ metadata/_edit_lock_ = true
 
 [node name="4" type="StaticBody2D" parent="." unique_id=273693789 node_paths=PackedStringArray("box", "collision_2d")]
 position = Vector2(1088, 544)
-script = ExtResource("4_xjeco")
+script = ExtResource("17_d0d85")
 id = 4
 box = NodePath("../BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox")
 collision_2d = [NodePath("CollisionShape2D")]
@@ -213,10 +256,10 @@ shape = SubResource("RectangleShape2D_nbwsh")
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="4" unique_id=609529703]
-material = ExtResource("12_ki8bc")
+material = ExtResource("16_isixn")
 position = Vector2(-2.193451e-05, -32)
 scale = Vector2(0.8333334, 0.5)
-texture = ExtResource("6_ki8bc")
+texture = ExtResource("18_ykav4")
 metadata/_edit_lock_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="4" unique_id=1960700690]
@@ -227,49 +270,6 @@ blend_mode = 2
 texture = SubResource("GradientTexture2D_kgmqw")
 metadata/_edit_lock_ = true
 
-[node name="Goal" parent="." unique_id=412398523 instance=ExtResource("13_nbwsh")]
-position = Vector2(1600, 352)
-
-[node name="DeathBox" parent="." unique_id=1943901647 instance=ExtResource("11_xjeco")]
-
-[node name="BoxInterface" parent="." unique_id=2091224111 instance=ExtResource("9_s80er")]
-
-[node name="Item" parent="BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox" parent_id_path=PackedInt32Array(2091224111, 527385168) index="0" unique_id=540643436 node_paths=PackedStringArray("object") instance=ExtResource("10_8jhox")]
-material = ExtResource("7_nbwsh")
-layout_mode = 2
-icon = ExtResource("11_hed5s")
-item = SubResource("Resource_fxnjf")
-id = 2
-object = NodePath("../../../../../../2")
-
-[node name="Item2" parent="BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox" parent_id_path=PackedInt32Array(2091224111, 527385168) index="1" unique_id=1828514067 node_paths=PackedStringArray("object") instance=ExtResource("10_8jhox")]
-material = ExtResource("11_j77fg")
-layout_mode = 2
-icon = ExtResource("11_hed5s")
-item = SubResource("Resource_ki8bc")
-id = 3
-object = NodePath("../../../../../../3")
-
-[node name="Item3" parent="BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox" parent_id_path=PackedInt32Array(2091224111, 527385168) index="2" unique_id=2070159129 instance=ExtResource("10_8jhox")]
-layout_mode = 2
-
-[node name="Item4" parent="BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox" parent_id_path=PackedInt32Array(2091224111, 527385168) index="3" unique_id=1878750815 instance=ExtResource("10_8jhox")]
-layout_mode = 2
-
-[node name="Item1" parent="BoxInterface/PanelContainer/VBoxContainer/OutsideBox" parent_id_path=PackedInt32Array(2091224111, 1854341907) index="0" unique_id=1726545559 node_paths=PackedStringArray("object")]
-material = ExtResource("5_j77fg")
-icon = ExtResource("11_hed5s")
-item = SubResource("Resource_6r07y")
-id = 1
-object = NodePath("../../../../../1")
-
-[node name="Item2" parent="BoxInterface/PanelContainer/VBoxContainer/OutsideBox" parent_id_path=PackedInt32Array(2091224111, 1854341907) index="1" unique_id=1842494652 node_paths=PackedStringArray("object")]
-material = ExtResource("12_ki8bc")
-icon = ExtResource("11_hed5s")
-item = SubResource("Resource_6ioyp")
-id = 4
-object = NodePath("../../../../../4")
-
-[editable path="Player"]
 [editable path="Borders"]
+[editable path="Player"]
 [editable path="BoxInterface"]
