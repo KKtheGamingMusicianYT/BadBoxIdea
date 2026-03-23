@@ -145,7 +145,40 @@ size = Vector2(32, 56)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lyrkg"]
 size = Vector2(32, 72)
 
-[node name="Player" type="CharacterBody2D" unique_id=404843843 node_paths=PackedStringArray("BUFFER_JUMP_TIMER", "SMALL_PHYSICS_BOX", "COYOTE_BOX", "GAP_BOX", "GAP_CENSOR", "WALL_CENSOR", "FLOOR_WALL_CENSOR", "CLIP_LEFT", "CLIP_RIGHT", "CEILING_SENSOR", "HITBOX", "CHARACTER_ANIMATED_SPRITE", "state_machine")]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lyrkg"]
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_c43xd"]
+offsets = PackedFloat32Array(0.7, 1)
+colors = PackedColorArray(0.79607844, 0.972549, 0.972549, 1, 0.8036, 0.98, 0.98, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_avx33"]
+gradient = SubResource("Gradient_c43xd")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0.2)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_avx33"]
+offsets = PackedFloat32Array(0, 0.4)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rxg2u"]
+gradient = SubResource("Gradient_avx33")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lyrkg"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 1000.0
+initial_velocity_max = 3000.0
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_rxg2u")
+
+[node name="Player" type="CharacterBody2D" unique_id=404843843 node_paths=PackedStringArray("BUFFER_JUMP_TIMER", "SMALL_PHYSICS_BOX", "COYOTE_BOX", "GAP_BOX", "GAP_CENSOR", "WALL_CENSOR", "FLOOR_WALL_CENSOR", "CLIP_LEFT", "CLIP_RIGHT", "CEILING_SENSOR", "HITBOX", "CHARACTER_ANIMATED_SPRITE", "DEADED_GPU_PARTICLES", "state_machine")]
 z_index = 100
 collision_layer = 2
 script = ExtResource("1_v0iea")
@@ -162,6 +195,7 @@ CLIP_RIGHT = NodePath("ClipCeilingSensors/ClipRight")
 CEILING_SENSOR = NodePath("ClipCeilingSensors/CeilingSensor")
 HITBOX = NodePath("Hitbox")
 CHARACTER_ANIMATED_SPRITE = NodePath("AnimatedSprite2D")
+DEADED_GPU_PARTICLES = NodePath("DeadedParticles")
 properties = SubResource("Resource_hixwb")
 state_machine = NodePath("StateMachine")
 
@@ -265,6 +299,15 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=848860923]
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_lyrkg")
+
+[node name="DeadedParticles" type="GPUParticles2D" parent="." unique_id=1604977452]
+material = SubResource("CanvasItemMaterial_lyrkg")
+emitting = false
+amount = 128
+texture = SubResource("GradientTexture2D_avx33")
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_lyrkg")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1805402115 node_paths=PackedStringArray("parent")]
 script = ExtResource("2_cvnsp")

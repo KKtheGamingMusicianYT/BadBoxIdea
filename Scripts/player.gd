@@ -29,6 +29,9 @@ var collision_shape : CollisionShape2D
 @export_group("Sprites")
 @export var CHARACTER_ANIMATED_SPRITE : AnimatedSprite2D
 
+@export_group("Particles")
+@export var DEADED_GPU_PARTICLES : GPUParticles2D
+
 var coyot_box_pos : Vector2
 var floor_wall_censor_pos : Vector2
 var wall_censor_pos : Vector2
@@ -48,6 +51,9 @@ func _ready() -> void:
 	coyot_box_pos = COYOTE_BOX.position
 	floor_wall_censor_pos = FLOOR_WALL_CENSOR.position
 	wall_censor_pos = WALL_CENSOR.position
+	
+	DEADED_GPU_PARTICLES.emitting = false
+	
 # The conditions for Players to use states
 func _physics_process(_delta: float) -> void:
 	current_state = state_machine.current_state
@@ -151,7 +157,11 @@ func _match_states() -> void:
 			if Input.is_action_pressed("God_Mode"):
 				change_state(IDLE)
 		GET_DEADED:
-			return
+			velocity = Vector2(0,0)
+			CHARACTER_ANIMATED_SPRITE.stop()
+			CHARACTER_ANIMATED_SPRITE.visible = false
+			DEADED_GPU_PARTICLES.emitting = true
+			change_state(IDLE)
 
 func _check_jumping() -> void:
 	jumping = properties.JUMPING_FRAMES
