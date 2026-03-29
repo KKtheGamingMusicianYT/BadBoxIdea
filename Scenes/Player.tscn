@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://cgdiv0woq0uoa" path="res://Assets/Sprites/Player/WalkFrames/Frame0004.png" id="21_pqity"]
 [ext_resource type="Texture2D" uid="uid://xvijdhlhsu43" path="res://Assets/Sprites/Player/WalkFrames/Frame0005.png" id="22_opqna"]
 [ext_resource type="Texture2D" uid="uid://rc114cxa8r2k" path="res://Assets/Sprites/Player/WalkFrames/Frame0006.png" id="23_00okb"]
+[ext_resource type="AudioStream" uid="uid://st8n4o38x5rq" path="res://Assets/VoidBoxSFX.wav" id="23_c43xd"]
 [ext_resource type="Texture2D" uid="uid://bi6jrdqxrvq0p" path="res://Assets/Sprites/Player/WalkFrames/Frame0007.png" id="24_6hr71"]
 [ext_resource type="Texture2D" uid="uid://bxhom6aytxunj" path="res://Assets/Sprites/Player/WalkFrames/Frame0008.png" id="25_y6y60"]
 [ext_resource type="Texture2D" uid="uid://cnk1le3oqyomo" path="res://Assets/Sprites/Player/WalkFrames/Frame0009.png" id="26_vmcrb"]
@@ -178,11 +179,12 @@ initial_velocity_max = 3000.0
 gravity = Vector3(0, 0, 0)
 color_ramp = SubResource("GradientTexture1D_rxg2u")
 
-[node name="Player" type="CharacterBody2D" unique_id=404843843 node_paths=PackedStringArray("BUFFER_JUMP_TIMER", "SMALL_PHYSICS_BOX", "COYOTE_BOX", "GAP_BOX", "GAP_CENSOR", "WALL_CENSOR", "FLOOR_WALL_CENSOR", "CLIP_LEFT", "CLIP_RIGHT", "CEILING_SENSOR", "HITBOX", "CHARACTER_ANIMATED_SPRITE", "DEADED_GPU_PARTICLES", "state_machine")]
+[node name="Player" type="CharacterBody2D" unique_id=404843843 node_paths=PackedStringArray("BUFFER_JUMP_TIMER", "SFX_PLAYER", "SMALL_PHYSICS_BOX", "COYOTE_BOX", "GAP_BOX", "GAP_CENSOR", "WALL_CENSOR", "FLOOR_WALL_CENSOR", "CLIP_LEFT", "CLIP_RIGHT", "CEILING_SENSOR", "HITBOX", "CHARACTER_ANIMATED_SPRITE", "DEADED_GPU_PARTICLES", "state_machine")]
 z_index = 100
 collision_layer = 2
 script = ExtResource("1_v0iea")
 BUFFER_JUMP_TIMER = NodePath("BufferJumpTimer")
+SFX_PLAYER = NodePath("SFXPlayer")
 mass = 10.0
 SMALL_PHYSICS_BOX = NodePath("SmallPhysicsHitBox")
 COYOTE_BOX = NodePath("CoyoteBox")
@@ -239,6 +241,11 @@ metadata/_edit_lock_ = true
 wait_time = 0.2
 one_shot = true
 ignore_time_scale = true
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=1069684823]
+stream = ExtResource("23_c43xd")
+volume_db = -2.0
+max_polyphony = 2
 
 [node name="CoyoteBox" type="CollisionPolygon2D" parent="." unique_id=780247785]
 position = Vector2(-24, -8)

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 StatesSetup="*uid://bisdxqt4wvs20"
 SwitchScene="*uid://0w86fqmkm3li"
+Bgm="*uid://dgimllly3ty8b"
 
 [display]
 

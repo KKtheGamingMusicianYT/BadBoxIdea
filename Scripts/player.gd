@@ -2,6 +2,7 @@ extends CharacterBody
 class_name Player
 
 @export var BUFFER_JUMP_TIMER : Timer
+@export var SFX_PLAYER : AudioStreamPlayer
 @export var CAN_USE_GOD_MODE : bool = false
 @export_custom(PROPERTY_HINT_NONE, "suffix: kg") var mass : float = 1
 @export_group("Physics HitBoxes")
@@ -171,6 +172,10 @@ func _check_jumping() -> void:
 	jumping = properties.JUMPING_FRAMES
 	if Input.is_action_pressed("Jump") and BUFFER_JUMP_TIMER.time_left != 0: # jump if allowed
 		change_state(JUMP)
+		SFX_PLAYER.play(0.0)
+		await get_tree().create_timer(0.5).timeout
+		SFX_PLAYER.stop()
+		
 
 func _check_just_left_floor() -> void:
 	if not is_on_floor():

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dgimllly3ty8b"]
+
+[ext_resource type="AudioStream" uid="uid://dj2e4ulruwult" path="res://Assets/VoidBox.wav" id="1_jijru"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" unique_id=358514591]
+stream = ExtResource("1_jijru")
+volume_db = -5.0
+autoplay = true

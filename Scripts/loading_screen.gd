@@ -3,7 +3,7 @@ extends CanvasLayer
 signal loading_screen_ready
 
 @export var animation_player: AnimationPlayer
-var extra_wait_time : float = 1.12
+var extra_wait_time : float = 1.0
 
 func _ready() -> void:
 	await animation_player.animation_finished
@@ -14,7 +14,7 @@ func _on_progress_changed(_new_value : float) -> void:
 	
 func _on_load_finished() -> void:
 	
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(extra_wait_time).timeout
 	
 	animation_player.play_backwards("transition")
 	await animation_player.animation_finished
