@@ -16,7 +16,7 @@ metadata/_snap_enabled = true
 texture = SubResource("GradientTexture2D_bcvvp")
 modulate_color = Color(1, 1, 1, 0.003921569)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xhktg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vj1tw"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xhktg"]
@@ -28,7 +28,7 @@ bg_color = Color(0, 0, 0, 1)
 
 [resource]
 Button/styles/hover = SubResource("StyleBoxTexture_clla0")
-Button/styles/normal = SubResource("StyleBoxFlat_xhktg")
+Button/styles/normal = SubResource("StyleBoxFlat_vj1tw")
 Button/styles/pressed = SubResource("StyleBoxTexture_xhktg")
 GridContainer/constants/h_separation = 0
 GridContainer/constants/v_separation = 0

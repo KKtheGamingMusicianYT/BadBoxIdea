@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://c0ceixq4vjbdm"]
+
+[ext_resource type="PackedScene" uid="uid://b1ytlcx85siou" path="res://Scenes/sky_box.tscn" id="1_w31pl"]
+[ext_resource type="Theme" uid="uid://bbod45f0la5hg" path="res://Resources/Themes/box_interface_theme.tres" id="2_ekrfg"]
+[ext_resource type="Material" uid="uid://hs6fydc27bmt" path="res://Resources/ObjectColors/kk_pink.tres" id="3_q2qps"]
+[ext_resource type="Script" uid="uid://c5ddq2cjsjh1k" path="res://Scripts/start_button.gd" id="4_q2qps"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fp2oq"]
+load_path = "res://.godot/imported/Size0001.png-0205a8f3342cc7f15b1bbfa243eb6a13.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q2qps"]
+texture = SubResource("CompressedTexture2D_fp2oq")
+region_rect = Rect2(0, 128, 384, 256)
+modulate_color = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yosvi"]
+texture = SubResource("CompressedTexture2D_fp2oq")
+region_rect = Rect2(0, 128, 384, 256)
+
+[sub_resource type="Gradient" id="Gradient_6ioyp"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q2qps"]
+gradient = SubResource("Gradient_6ioyp")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
+[node name="Title" type="Node2D" unique_id=486415255]
+
+[node name="SkyBox" parent="." unique_id=1652161055 instance=ExtResource("1_w31pl")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1101523827]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer" unique_id=1878797008]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 220.0
+offset_right = 200.0
+offset_bottom = 420.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ekrfg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer" unique_id=917535412]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="StartButton" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer" unique_id=1750709268]
+material = ExtResource("3_q2qps")
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxTexture_q2qps")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_q2qps")
+theme_override_styles/hover = SubResource("StyleBoxTexture_yosvi")
+text = "Start"
+script = ExtResource("4_q2qps")
+
+[node name="PointLight2D" type="PointLight2D" parent="CanvasLayer/PanelContainer/VBoxContainer/StartButton" unique_id=1303016386]
+position = Vector2(200.00003, 103.999985)
+scale = Vector2(9, 6.0000005)
+energy = 2.0
+blend_mode = 2
+range_layer_max = 1
+texture = SubResource("GradientTexture2D_q2qps")
