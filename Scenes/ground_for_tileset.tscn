@@ -29,11 +29,14 @@ metadata/_custom_type_script = "uid://dax815pnda6ip"
 shape = SubResource("RectangleShape2D_jv3fj")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=430556534]
+light_mask = 3
 texture = ExtResource("1_oqyp1")
 region_enabled = true
 region_rect = Rect2(128, 128, 256, 256)
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=470047732]
+light_mask = 3
+visibility_layer = 3
 position = Vector2(-1.5258789e-05, 9.536743e-06)
 scale = Vector2(5.9999995, 5.9999995)
 energy = 2.0

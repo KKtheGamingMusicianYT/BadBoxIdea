@@ -4,6 +4,7 @@
 [ext_resource type="Theme" uid="uid://bbod45f0la5hg" path="res://Resources/Themes/box_interface_theme.tres" id="2_ekrfg"]
 [ext_resource type="Material" uid="uid://hs6fydc27bmt" path="res://Resources/ObjectColors/kk_pink.tres" id="3_q2qps"]
 [ext_resource type="Script" uid="uid://c5ddq2cjsjh1k" path="res://Scripts/start_button.gd" id="4_q2qps"]
+[ext_resource type="Texture2D" uid="uid://xi7vcvghssq7" path="res://Assets/Logo.png" id="5_yosvi"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fp2oq"]
 load_path = "res://.godot/imported/Size0001.png-0205a8f3342cc7f15b1bbfa243eb6a13.ctex"
@@ -30,9 +31,31 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 metadata/_snap_enabled = true
 
+[sub_resource type="Animation" id="Animation_yosvi"]
+resource_name = "title_bob"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(416, -0.5, 0, 0, 0, 400, -0.5, 0, 0.5, 0, 432, -0.5, 0, 0.5, 0, 416, 0, 0, 0.5, 0),
+"times": PackedFloat32Array(0, 1.25, 3.75, 5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2qdx2"]
+_data = {
+&"title_bob": SubResource("Animation_yosvi")
+}
+
 [node name="Title" type="Node2D" unique_id=486415255]
 
 [node name="SkyBox" parent="." unique_id=1652161055 instance=ExtResource("1_w31pl")]
+metadata/_edit_lock_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1101523827]
 
@@ -74,3 +97,12 @@ energy = 2.0
 blend_mode = 2
 range_layer_max = 1
 texture = SubResource("GradientTexture2D_q2qps")
+
+[node name="Logo" type="Sprite2D" parent="CanvasLayer" unique_id=188238755]
+position = Vector2(1024, 414.72653)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_yosvi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Logo" unique_id=1346346598]
+libraries/ = SubResource("AnimationLibrary_2qdx2")
+autoplay = &"title_bob"

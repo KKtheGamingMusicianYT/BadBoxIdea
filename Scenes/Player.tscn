@@ -200,6 +200,7 @@ CHARACTER_ANIMATED_SPRITE = NodePath("AnimatedSprite2D")
 DEADED_GPU_PARTICLES = NodePath("DeadedParticles")
 properties = SubResource("Resource_hixwb")
 state_machine = NodePath("StateMachine")
+metadata/_edit_lock_ = true
 
 [node name="PlayerCamera" type="Camera2D" parent="." unique_id=744180924 node_paths=PackedStringArray("PLAYER")]
 limit_left = 0
@@ -223,12 +224,16 @@ texture = SubResource("GradientTexture2D_lyrkg")
 metadata/_edit_lock_ = true
 
 [node name="FlashLight" type="PointLight2D" parent="." unique_id=858341556]
+light_mask = 3
+visibility_layer = 3
 position = Vector2(1.4305115e-06, -7.999999)
 scale = Vector2(2.2499998, 2.2499998)
 enabled = false
 energy = 500.0
 blend_mode = 2
+range_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_c43xd")
+metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=396514442]
 scale = Vector2(0.5, 0.5)
@@ -244,8 +249,7 @@ ignore_time_scale = true
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=1069684823]
 stream = ExtResource("23_c43xd")
-volume_db = -2.0
-max_polyphony = 2
+max_polyphony = 5
 
 [node name="CoyoteBox" type="CollisionPolygon2D" parent="." unique_id=780247785]
 position = Vector2(-24, -8)
@@ -302,6 +306,7 @@ shape = SubResource("RectangleShape2D_megsn")
 metadata/_edit_lock_ = true
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=517260526]
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=848860923]
 position = Vector2(0, -4)
@@ -315,6 +320,7 @@ texture = SubResource("GradientTexture2D_avx33")
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_lyrkg")
+metadata/_edit_lock_ = true
 
 [node name="StateMachine" type="Node" parent="." unique_id=1805402115 node_paths=PackedStringArray("parent")]
 script = ExtResource("2_cvnsp")

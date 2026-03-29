@@ -8,10 +8,23 @@
 [ext_resource type="PackedScene" uid="uid://dhyync7cvqavl" path="res://Scenes/goal.tscn" id="6_20kd1"]
 [ext_resource type="PackedScene" uid="uid://d2hp865b8yt3u" path="res://Scenes/death_box.tscn" id="7_gqyih"]
 [ext_resource type="PackedScene" uid="uid://coefif7s7p7tm" path="res://Scenes/box_interface.tscn" id="8_srugb"]
+[ext_resource type="PackedScene" uid="uid://bx7japdg7ed76" path="res://Scenes/item.tscn" id="9_gqyih"]
+[ext_resource type="Material" uid="uid://d4d8ltcet1eep" path="res://Resources/ObjectColors/yellow.tres" id="10_srugb"]
+[ext_resource type="Texture2D" uid="uid://clg8samn7gqkr" path="res://Assets/Sprites/Block/Size0000.png" id="11_vdq4f"]
+[ext_resource type="Script" uid="uid://dd25n2sul3wg4" path="res://Scripts/ResourceScripts/item_data.gd" id="12_633d5"]
+[ext_resource type="Script" uid="uid://l47uf8luj8s6" path="res://Scripts/node_with_id.gd" id="13_rw7sn"]
+[ext_resource type="Texture2D" uid="uid://bx1hsboq4euo8" path="res://Assets/Sprites/Block/Size0002.png" id="14_27vqw"]
+
+[sub_resource type="Resource" id="Resource_jd0ia"]
+script = ExtResource("12_633d5")
+volume = 1
+icon = ExtResource("11_vdq4f")
+metadata/_custom_type_script = "uid://dd25n2sul3wg4"
 
 [node name="Level5" type="Node2D" unique_id=1795732649]
 
 [node name="SkyBox" parent="." unique_id=1652161055 instance=ExtResource("1_reooa")]
+metadata/_edit_lock_ = true
 
 [node name="CanvasModulate" parent="SkyBox" index="0" unique_id=778874230]
 color = Color(0.0038333319, 0, 0.01, 1)
@@ -29,7 +42,7 @@ tile_set = ExtResource("3_0fyhm")
 camera = NodePath("../../Player/PlayerCamera")
 
 [node name="Player" parent="." unique_id=404843843 instance=ExtResource("5_3koi7")]
-position = Vector2(192, 832)
+position = Vector2(288, 832)
 
 [node name="PlayerCamera" parent="Player" index="0" unique_id=744180924]
 limit_top = -1080
@@ -37,7 +50,6 @@ limit_right = 3840
 
 [node name="FlashLight" parent="Player" index="2" unique_id=858341556]
 enabled = true
-metadata/_edit_lock_ = true
 
 [node name="Goal" parent="." unique_id=412398523 instance=ExtResource("6_20kd1")]
 position = Vector2(2656, 64)
@@ -45,6 +57,32 @@ position = Vector2(2656, 64)
 [node name="DeathBox" parent="." unique_id=1943901647 instance=ExtResource("7_gqyih")]
 
 [node name="BoxInterface" parent="." unique_id=2091224111 instance=ExtResource("8_srugb")]
+
+[node name="Item" parent="BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox" parent_id_path=PackedInt32Array(2091224111, 527385168) index="0" unique_id=540643436 instance=ExtResource("9_gqyih")]
+material = ExtResource("10_srugb")
+layout_mode = 2
+icon = ExtResource("11_vdq4f")
+item = SubResource("Resource_jd0ia")
+id = 1
+
+[node name="1" type="RigidBody2D" parent="." unique_id=836210125 node_paths=PackedStringArray("box", "collision_2d")]
+position = Vector2(384, 800)
+mass = 3.0
+lock_rotation = true
+script = ExtResource("13_rw7sn")
+box = NodePath("../BoxInterface/PanelContainer/VBoxContainer/PanelContainer/InsideBox")
+collision_2d = [NodePath("Collision0")]
+
+[node name="Collision0" type="CollisionPolygon2D" parent="1" unique_id=663083049]
+polygon = PackedVector2Array(-64, -64, 64, -64, 64, 32, 0, 64, -64, 32)
+
+[node name="Sprite2D" type="Sprite2D" parent="1" unique_id=635859865]
+material = ExtResource("10_srugb")
+position = Vector2(0, 6.67572e-06)
+scale = Vector2(0.5, 0.4999999)
+texture = ExtResource("14_27vqw")
+region_enabled = true
+region_rect = Rect2(128, 128, 256, 256)
 
 [editable path="SkyBox"]
 [editable path="Borders"]

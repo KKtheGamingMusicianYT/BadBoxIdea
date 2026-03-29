@@ -37,6 +37,8 @@ var coyot_box_pos : Vector2
 var floor_wall_censor_pos : Vector2
 var wall_censor_pos : Vector2
 
+var level : PackedScene
+
 enum { # Available states for the Player for readability. Index used by the possibla_states dict to reference paths
 	IDLE, # 0
 	WALK, # 1
@@ -59,6 +61,8 @@ func _ready() -> void:
 	await DEADED_GPU_PARTICLES.finished
 	DEADED_GPU_PARTICLES.emitting = false
 	set_physics_process(true)
+	
+	level = load(get_tree().current_scene.scene_file_path)
 	
 # The conditions for Players to use states
 func _physics_process(_delta: float) -> void:
@@ -85,6 +89,7 @@ func _update_box_dir() -> void:
 	WALL_CENSOR.position.x = wall_censor_pos.x + (24 * int(bool(direction - 1)) * int(bool(direction)))
 
 func _match_states() -> void:
+	_sd()
 	match possible_states.find_key(current_state):
 		IDLE:
 			if direction:
@@ -197,6 +202,11 @@ func _check_gap_running() -> void:
 	if not GAP_CENSOR.is_colliding() and abs(velocity.x) > properties.WALKING_SPEED and FLOOR_WALL_CENSOR.is_colliding():
 		GAP_BOX.disabled = false
 
+func _sd() -> void:
+	if Input.is_action_just_released("Get_Deaded"):
+		change_state(GET_DEADED)
+		SFX_PLAYER.play(0.81)
+		SwitchScene.switch_to(level.resource_path, 3)
 func _adjust_max_velocity() -> void:
 	# The JUMP and FALL states use VELOCITY.x to determine sideways movement, 
 	# so set the VELOCITY.x to the RUNNING/WALKING_SPEED when needed to carry momentum
